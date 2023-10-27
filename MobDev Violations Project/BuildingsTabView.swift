@@ -17,7 +17,6 @@ struct BuildingsTabView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Search Bar
                 HStack {
                     TextField("Search buildings", text: $searchText)
                         .onChange(of: searchText) { newValue in
@@ -40,7 +39,6 @@ struct BuildingsTabView: View {
                     }
                 }
 
-                // Recent Searches
                 if !recentSearches.isEmpty {
                     List {
                         Section(header: Text("Recent Searches")) {
@@ -56,7 +54,6 @@ struct BuildingsTabView: View {
                     }
                 }
                 
-                // Search Results
                 List(searchResults, id: \.self) { result in
                     Text(result)
                 }
@@ -70,12 +67,10 @@ struct BuildingsTabView: View {
     }
 
     func generateRandomResults() -> [String] {
-        // Add the search text to recent searches if it's not already there
         if !recentSearches.contains(searchText) {
             recentSearches.append(searchText)
         }
 
-        // Generate 2 or 3 random results
         let numberOfResults = Int.random(in: 2...3)
         return (0..<numberOfResults).map { _ in
             "Result \(Int.random(in: 1...100))"
