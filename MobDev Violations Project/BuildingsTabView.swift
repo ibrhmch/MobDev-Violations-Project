@@ -19,9 +19,8 @@ struct BuildingsTabView: View {
             VStack {
                 HStack {
                     TextField("Search buildings", text: $searchText)
-                        .onChange(of: searchText) { newValue in
-                            // Generate random results when the search text changes
-                            if !newValue.isEmpty {
+                        .onChange(of: searchText) {
+                            if !searchText.isEmpty {
                                 searchResults = generateRandomResults()
                             } else {
                                 searchResults.removeAll()
