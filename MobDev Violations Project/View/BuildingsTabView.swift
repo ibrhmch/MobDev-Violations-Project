@@ -13,6 +13,8 @@ struct BuildingsTabView: View {
     @State private var searchText = ""
     @State private var recentSearches = [String]()
     @State private var searchResults = [String]()
+    @ObservedObject private var buildingsVM = BuildingsViewModel()
+    
 
     var body: some View {
         NavigationView {
@@ -56,8 +58,17 @@ struct BuildingsTabView: View {
                 List(searchResults, id: \.self) { result in
                     Text(result)
                 }
+                
+                if (buildingsVM.buildingsFetched){
+                    List(buildingsVM.listOfBuildings!, id: \.self) { result in
+                        Text(result.bin_id)
+                    }
+                }
             }
             .navigationBarTitle("Buildings")
+            .task{
+                await buildingsVM.setAllBuildings()
+            }
         }
     }
 
