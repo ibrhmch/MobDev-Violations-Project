@@ -13,7 +13,7 @@ struct BuildingsTabView: View {
     @State private var searchText = ""
     @State private var recentSearches = [String]()
     @State private var searchResults = [String]()
-    @ObservedObject private var buildingsVM = BuildingsViewModel()
+    @ObservedObject private var buildingsVM = BuildingsSearchViewModel()
     
 
     var body: some View {
@@ -61,7 +61,9 @@ struct BuildingsTabView: View {
                 
                 if (buildingsVM.buildingsFetched){
                     List(buildingsVM.listOfBuildings!, id: \.self) { result in
-                        Text("\(result.bin_id) - \(String(result.address.prefix(20)))")
+                        NavigationLink(destination: BuildingDetailCardView()) {
+                            Text("\(result.bin_id)")
+                        }
                     }
                 }
             }
