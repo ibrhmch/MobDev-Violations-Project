@@ -8,13 +8,13 @@
 import Foundation
 
 @MainActor
-class BuildingsViewModel: ObservableObject{
+class BuildingsSearchViewModel: ObservableObject{
     @Published var buildingsFetched = false
     @Published var listOfBuildings: [Building]?
     
-    func setBuildingByID(bin_id: String = "") async -> Building? {
+    func getBuildingByID(bin_id: String = "") async -> BuildingDetailsResponse? {
         do {
-            guard let url = URL(string: "http://127.0.0.1:5000/get_building?bin_id=\(bin_id)") else {
+            guard let url = URL(string: "http://127.0.0.1:5000/get_building_data?bin_id=\(bin_id)") else {
                 print("Invalid URL")
                 return nil
             }
@@ -26,7 +26,7 @@ class BuildingsViewModel: ObservableObject{
                 return nil
             }
             
-            let building = try JSONDecoder().decode(Building.self, from: data)
+            let building = try JSONDecoder().decode(BuildingDetailsResponse.self, from: data)
             return building
         } catch {
             print("Network Request or Decoding Failed: \(error)")

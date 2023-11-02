@@ -61,7 +61,7 @@ struct BuildingsTabView: View {
                 
                 if (buildingsVM.buildingsFetched){
                     List(buildingsVM.listOfBuildings!, id: \.self) { result in
-                        Text(result.bin_id)
+                        Text("\(result.bin_id) - \(String(result.address.prefix(20)))")
                     }
                 }
             }
