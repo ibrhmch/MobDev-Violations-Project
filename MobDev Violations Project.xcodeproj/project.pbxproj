@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5931B57E2AF029E000584F14 /* BuildingsSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B57D2AF029E000584F14 /* BuildingsSearchModel.swift */; };
-		5931B5812AF0C1F900584F14 /* BuildingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B5802AF0C1F900584F14 /* BuildingsViewModel.swift */; };
+		59079BBC2AF4343B003D5C9E /* BuildingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59079BBB2AF4343B003D5C9E /* BuildingDetailsViewModel.swift */; };
+		5931B57E2AF029E000584F14 /* BuildingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B57D2AF029E000584F14 /* BuildingModels.swift */; };
+		5931B5812AF0C1F900584F14 /* BuildingsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B5802AF0C1F900584F14 /* BuildingsSearchViewModel.swift */; };
+		5931B5832AF0CAEB00584F14 /* BuildingDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B5822AF0CAEB00584F14 /* BuildingDetailCardView.swift */; };
 		59D61F842AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D61F832AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift */; };
 		59D61F862AEB4C26000E25C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D61F852AEB4C26000E25C2 /* ContentView.swift */; };
 		59D61F882AEB4C28000E25C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D61F872AEB4C28000E25C2 /* Assets.xcassets */; };
@@ -20,8 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5931B57D2AF029E000584F14 /* BuildingsSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingsSearchModel.swift; sourceTree = "<group>"; };
-		5931B5802AF0C1F900584F14 /* BuildingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingsViewModel.swift; sourceTree = "<group>"; };
+		59079B8D2AF2CE51003D5C9E /* temp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = temp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		59079BBB2AF4343B003D5C9E /* BuildingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingDetailsViewModel.swift; sourceTree = "<group>"; };
+		5931B57D2AF029E000584F14 /* BuildingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingModels.swift; sourceTree = "<group>"; };
+		5931B5802AF0C1F900584F14 /* BuildingsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingsSearchViewModel.swift; sourceTree = "<group>"; };
+		5931B5822AF0CAEB00584F14 /* BuildingDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingDetailCardView.swift; sourceTree = "<group>"; };
 		59D61F802AEB4C26000E25C2 /* MobDev Violations Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MobDev Violations Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D61F832AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobDev_Violations_ProjectApp.swift; sourceTree = "<group>"; };
 		59D61F852AEB4C26000E25C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,12 +49,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5931B57A2AF0298100584F14 /* View */ = {
+		59079B8E2AF2D2B1003D5C9E /* Buildings */ = {
+			isa = PBXGroup;
+			children = (
+				59D61F992AEB518F000E25C2 /* BuildingsTabView.swift */,
+				5931B5822AF0CAEB00584F14 /* BuildingDetailCardView.swift */,
+			);
+			path = Buildings;
+			sourceTree = "<group>";
+		};
+		59079B8F2AF2D2BD003D5C9E /* VOs */ = {
 			isa = PBXGroup;
 			children = (
 				59D61F932AEB4E7A000E25C2 /* VOsTabView.swift */,
-				59D61F992AEB518F000E25C2 /* BuildingsTabView.swift */,
+			);
+			path = VOs;
+			sourceTree = "<group>";
+		};
+		59079B902AF2D2C6003D5C9E /* NOVs */ = {
+			isa = PBXGroup;
+			children = (
 				59D61F952AEB4E8E000E25C2 /* NOVsTabView.swift */,
+			);
+			path = NOVs;
+			sourceTree = "<group>";
+		};
+		59079BBA2AF43420003D5C9E /* Buildings */ = {
+			isa = PBXGroup;
+			children = (
+				5931B5802AF0C1F900584F14 /* BuildingsSearchViewModel.swift */,
+				59079BBB2AF4343B003D5C9E /* BuildingDetailsViewModel.swift */,
+			);
+			path = Buildings;
+			sourceTree = "<group>";
+		};
+		5931B57A2AF0298100584F14 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59079B902AF2D2C6003D5C9E /* NOVs */,
+				59079B8F2AF2D2BD003D5C9E /* VOs */,
+				59079B8E2AF2D2B1003D5C9E /* Buildings */,
 				59D61F972AEB4F00000E25C2 /* SettingsTabView.swift */,
 			);
 			path = View;
@@ -58,7 +97,7 @@
 		5931B57B2AF029AD00584F14 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				5931B5802AF0C1F900584F14 /* BuildingsViewModel.swift */,
+				59079BBA2AF43420003D5C9E /* Buildings */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -66,7 +105,7 @@
 		5931B57C2AF029B900584F14 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5931B57D2AF029E000584F14 /* BuildingsSearchModel.swift */,
+				5931B57D2AF029E000584F14 /* BuildingModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -97,6 +136,7 @@
 				59D61F832AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift */,
 				59D61F872AEB4C28000E25C2 /* Assets.xcassets */,
 				59D61F892AEB4C28000E25C2 /* Preview Content */,
+				59079B8D2AF2CE51003D5C9E /* temp.playground */,
 			);
 			path = "MobDev Violations Project";
 			sourceTree = "<group>";
@@ -179,12 +219,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5931B5812AF0C1F900584F14 /* BuildingsViewModel.swift in Sources */,
+				5931B5812AF0C1F900584F14 /* BuildingsSearchViewModel.swift in Sources */,
+				59079BBC2AF4343B003D5C9E /* BuildingDetailsViewModel.swift in Sources */,
 				59D61F962AEB4E8E000E25C2 /* NOVsTabView.swift in Sources */,
 				59D61F862AEB4C26000E25C2 /* ContentView.swift in Sources */,
 				59D61F942AEB4E7A000E25C2 /* VOsTabView.swift in Sources */,
+				5931B5832AF0CAEB00584F14 /* BuildingDetailCardView.swift in Sources */,
 				59D61F842AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift in Sources */,
-				5931B57E2AF029E000584F14 /* BuildingsSearchModel.swift in Sources */,
+				5931B57E2AF029E000584F14 /* BuildingModels.swift in Sources */,
 				59D61F9A2AEB518F000E25C2 /* BuildingsTabView.swift in Sources */,
 				59D61F982AEB4F00000E25C2 /* SettingsTabView.swift in Sources */,
 			);

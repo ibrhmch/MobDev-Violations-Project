@@ -15,3 +15,5 @@ project.xcworkspace/
 DerivedData
 *.hmap
 *.ipa
+*.playgrounds
+
