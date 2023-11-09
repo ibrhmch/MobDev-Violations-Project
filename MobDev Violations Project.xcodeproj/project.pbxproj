@@ -11,6 +11,8 @@
 		5931B57E2AF029E000584F14 /* BuildingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B57D2AF029E000584F14 /* BuildingModels.swift */; };
 		5931B5812AF0C1F900584F14 /* BuildingsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B5802AF0C1F900584F14 /* BuildingsSearchViewModel.swift */; };
 		5931B5832AF0CAEB00584F14 /* BuildingDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B5822AF0CAEB00584F14 /* BuildingDetailCardView.swift */; };
+		59829DF22AFD88A800E18C97 /* ViolationsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59829DF12AFD88A800E18C97 /* ViolationsSearchViewModel.swift */; };
+		59829DF42AFD8C7900E18C97 /* VOsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59829DF32AFD8C7900E18C97 /* VOsDetailsView.swift */; };
 		59D61F842AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D61F832AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift */; };
 		59D61F862AEB4C26000E25C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D61F852AEB4C26000E25C2 /* ContentView.swift */; };
 		59D61F882AEB4C28000E25C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D61F872AEB4C28000E25C2 /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 		5931B57D2AF029E000584F14 /* BuildingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingModels.swift; sourceTree = "<group>"; };
 		5931B5802AF0C1F900584F14 /* BuildingsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingsSearchViewModel.swift; sourceTree = "<group>"; };
 		5931B5822AF0CAEB00584F14 /* BuildingDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingDetailCardView.swift; sourceTree = "<group>"; };
+		59829DF12AFD88A800E18C97 /* ViolationsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationsSearchViewModel.swift; sourceTree = "<group>"; };
+		59829DF32AFD8C7900E18C97 /* VOsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOsDetailsView.swift; sourceTree = "<group>"; };
 		59D61F802AEB4C26000E25C2 /* MobDev Violations Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MobDev Violations Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D61F832AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobDev_Violations_ProjectApp.swift; sourceTree = "<group>"; };
 		59D61F852AEB4C26000E25C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				59D61F932AEB4E7A000E25C2 /* VOsTabView.swift */,
+				59829DF32AFD8C7900E18C97 /* VOsDetailsView.swift */,
 			);
 			path = VOs;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 		5931B57B2AF029AD00584F14 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				59829DF02AFD888C00E18C97 /* VOs */,
 				59079BBA2AF43420003D5C9E /* Buildings */,
 			);
 			path = ViewModel;
@@ -116,6 +122,14 @@
 				59D61F972AEB4F00000E25C2 /* SettingsTabView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		59829DF02AFD888C00E18C97 /* VOs */ = {
+			isa = PBXGroup;
+			children = (
+				59829DF12AFD88A800E18C97 /* ViolationsSearchViewModel.swift */,
+			);
+			path = VOs;
 			sourceTree = "<group>";
 		};
 		59D61F772AEB4C26000E25C2 = {
@@ -230,10 +244,12 @@
 				5931B5812AF0C1F900584F14 /* BuildingsSearchViewModel.swift in Sources */,
 				59079BBC2AF4343B003D5C9E /* BuildingDetailsViewModel.swift in Sources */,
 				59D61F962AEB4E8E000E25C2 /* NOVsTabView.swift in Sources */,
+				59829DF22AFD88A800E18C97 /* ViolationsSearchViewModel.swift in Sources */,
 				59D61F862AEB4C26000E25C2 /* ContentView.swift in Sources */,
 				59D61F942AEB4E7A000E25C2 /* VOsTabView.swift in Sources */,
 				5931B5832AF0CAEB00584F14 /* BuildingDetailCardView.swift in Sources */,
 				59D61F842AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift in Sources */,
+				59829DF42AFD8C7900E18C97 /* VOsDetailsView.swift in Sources */,
 				5931B57E2AF029E000584F14 /* BuildingModels.swift in Sources */,
 				59D61F9A2AEB518F000E25C2 /* BuildingsTabView.swift in Sources */,
 				59D61F982AEB4F00000E25C2 /* SettingsTabView.swift in Sources */,
