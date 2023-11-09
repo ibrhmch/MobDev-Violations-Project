@@ -9,7 +9,6 @@ import SwiftUI
 
 struct VOsDetailsView: View {
     var bin_id: String
-    var address: String
     var date: String
     var status: Bool
     var vo: String
@@ -33,9 +32,14 @@ struct VOsDetailsView: View {
                         Divider()
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
+                                Text("\(vo)")
+                                    .bold()
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            }
+                            HStack {
                                 Text("Issued On:")
                                 Spacer()
-                                Text("\(date)")
+                                Text("\(getDateFromString(date))")
                             }
                             HStack {
                                 Text("BIN:")
@@ -79,6 +83,22 @@ struct VOsDetailsView: View {
         }
 }
 
+func getDateFromString(_ dateString: String) -> String {
+    let inputFormatter = DateFormatter()
+    inputFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss 'GMT'"
+    inputFormatter.timeZone = TimeZone(abbreviation: "GMT")
+
+    guard let date = inputFormatter.date(from: dateString) else {
+        return "2022-01-01"
+    }
+    
+    let outputFormatter = DateFormatter()
+    outputFormatter.dateFormat = "yyyy-MM-dd" // or "dd MMM yyyy" for "10 Oct 2023"
+    outputFormatter.timeZone = TimeZone(abbreviation: "GMT") // Set the timezone if needed
+    
+    return outputFormatter.string(from: date)
+}
+
 #Preview {
-    VOsDetailsView(bin_id: "1091233", address: "Rock 10", date: "November 21, 2023", status: true, vo: "Random Number")
+    VOsDetailsView(bin_id: "1091233", date: "Tue, 10 Oct 2023 14:14:25 GMT", status: true, vo: "LD123123")
 }
