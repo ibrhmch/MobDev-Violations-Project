@@ -41,13 +41,13 @@ struct NumberOfViolations: Decodable, Hashable {
 }
 
 struct NoticeOfViolations: Decodable, Hashable {
-    let bin: String
+    let bin_id: String
     let date: String
     let nov: String
     let status: Bool
 
     init(bin: String = UUID().uuidString, date: String = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none), nov: String = UUID().uuidString, status: Bool = Bool.random()) {
-        self.bin = bin
+        self.bin_id = bin
         self.date = date
         self.nov = nov
         self.status = status
@@ -55,13 +55,13 @@ struct NoticeOfViolations: Decodable, Hashable {
 }
 
 struct ViolationOrder: Decodable, Hashable {
-    let bin: String
+    let bin_id: String
     let date: String
     let status: Bool
     let vo: String
 
     init(bin: String = UUID().uuidString, date: String = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none), status: Bool = Bool.random(), vo: String = UUID().uuidString) {
-        self.bin = bin
+        self.bin_id = bin
         self.date = date
         self.status = status
         self.vo = vo
