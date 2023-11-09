@@ -45,7 +45,7 @@ struct BuildingsTabView: View {
                 
                 if (buildingsVM.buildingsFetched){
                     List(searchResults, id: \.self) { result in
-                        NavigationLink(destination: BuildingDetailCardView()) {
+                        NavigationLink(destination: BuildingDetailCardView(result.bin_id, result.address)) {
                             Text("\(result.bin_id)")
                         }
                     }
