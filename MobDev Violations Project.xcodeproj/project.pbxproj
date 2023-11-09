@@ -86,10 +86,10 @@
 		5931B57A2AF0298100584F14 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59829DEF2AFC3EDC00E18C97 /* Settings */,
 				59079B902AF2D2C6003D5C9E /* NOVs */,
 				59079B8F2AF2D2BD003D5C9E /* VOs */,
 				59079B8E2AF2D2B1003D5C9E /* Buildings */,
-				59D61F972AEB4F00000E25C2 /* SettingsTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +108,14 @@
 				5931B57D2AF029E000584F14 /* BuildingModels.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		59829DEF2AFC3EDC00E18C97 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				59D61F972AEB4F00000E25C2 /* SettingsTabView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		59D61F772AEB4C26000E25C2 = {
