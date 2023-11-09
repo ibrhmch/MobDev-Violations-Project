@@ -29,7 +29,8 @@ struct BuildingsTabView: View {
                 HStack {
                     TextField("Search buildings", text: $searchText)
                         .onChange(of: searchText) {
-
+                            recentSearches.append(searchText)
+                            print(recentSearches)
                         }
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()

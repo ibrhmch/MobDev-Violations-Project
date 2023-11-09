@@ -86,22 +86,36 @@ struct BuildingDetailCardView: View {
                     
                     Spacer()
                     
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.2))
-                        .frame(height: 200)
-                        .cornerRadius(7)
-                        .overlay(
-                            VStack {
-                                Text("List of 7 Violation Orders")
-                                    .foregroundColor(.gray)
-                                    .padding(.bottom, 10)
-                                    .padding(.top, 0)
-                                ForEach(buildingDetails.listOfViolations!, id: \.self) { string in
-                                    Text(string.vo.prefix(18))
-                                }
+                    GroupBox(label: Label("7 Violations Found", systemImage: "signpost.left")) {
+                        VStack(alignment: .leading) {
+                            ForEach(buildingDetails.listOfViolations!, id: \.self) { string in
+                                Label(string.vo.prefix(12), systemImage: "hand.tap")
+                                    .frame(width: 200)
+                                    .padding(.horizontal, 40)
+                                    .padding(.vertical, 5)
+                                    .background(Color(red: 151/255, green: 171/255, blue: 179/255))
+                                    .cornerRadius(4)
                             }
-                                .padding()
-                        )
+                        }
+                        .padding()
+                    }
+                    .groupBoxStyle(DefaultGroupBoxStyle())
+                    
+                    GroupBox(label: Label("3 Notices Found", systemImage: "signpost.right")) {
+                        VStack(alignment: .leading) {
+                            ForEach(buildingDetails.listOfViolations!, id: \.self) { string in
+                                Label(string.vo.prefix(12), systemImage: "hand.tap")
+                                    .frame(width: 200)
+                                    .padding(.horizontal, 40)
+                                    .padding(.vertical, 5)
+                                    .background(Color(red: 151/255, green: 171/255, blue: 179/255))
+                                    .cornerRadius(4)
+                            }
+                        }
+                        .padding()
+                    }
+                    .groupBoxStyle(DefaultGroupBoxStyle())
+
                 }
                 .padding()
             }
