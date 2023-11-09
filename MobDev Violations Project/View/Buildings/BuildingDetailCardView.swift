@@ -8,23 +8,19 @@
 import SwiftUI
 
 struct BuildingDetailCardView: View {
-    @State var buildingDetails: BuildingDetailsResponse
-    var building: Building
-    var buildingDetailVM = BuildingDetailsViewModel()
+    @State var bin_id: String
+    @State var address: String
+    @ObservedObject var buildingDetailVM: BuildingDetailsViewModel
     
-    init() {
-        self.building = Building(bin_id: "1076262", address: "6th Avenue")
-        self.buildingDetails = BuildingDetailsResponse()
-    }
-    
-    init(_ building: Building, _ buildingDetails: BuildingDetailsResponse){
-        self.building = building
-        self.buildingDetails = buildingDetails
+    init(_ bin_id: String, _ address: String){
+        self.bin_id = bin_id
+        self.address = address
+        self.buildingDetailVM = BuildingDetailsViewModel(bin_id, address)
     }
     
     var body: some View {
         VStack{
-            Text("\(building.bin_id)")
+            Text("\(buildingDetailVM.building.bin_id)")
                 .font(.subheadline)
                 .padding(.bottom, 20)
             
@@ -36,12 +32,12 @@ struct BuildingDetailCardView: View {
                             HStack {
                                 Text("Address: ")
                                 Spacer()
-                                Text("\(building.address)")
+                                Text("\(buildingDetailVM.building.address)")
                             }
                             HStack {
                                 Text("BIN: ")
                                 Spacer()
-                                Text("\(building.bin_id)")
+                                Text("\(buildingDetailVM.building.bin_id)")
                             }
                             HStack {
                                 Text("Block: ")
@@ -73,22 +69,22 @@ struct BuildingDetailCardView: View {
                         HStack {
                             Text("# of Violation Orders:")
                             Spacer()
-                            Text("\(buildingDetails.violations.activeviolations)")
+                            Text("\(buildingDetailVM.buildingDetails.violations.activeviolations)")
                         }
                         
                         HStack {
                             Text("# of Notice of Violations:")
                             Spacer()
-                            Text("\(buildingDetails.notices.activenotices)")
+                            Text("\(buildingDetailVM.buildingDetails.notices.activenotices)")
                         }
                     }
                     .padding()
                     
                     Spacer()
                     
-                    GroupBox(label: Label("7 Violations Found", systemImage: "signpost.left")) {
+                    GroupBox(label: Label("\(buildingDetailVM.buildingDetails.violations.activeviolations) Violations Found", systemImage: "signpost.left")) {
                         VStack(alignment: .leading) {
-                            ForEach(buildingDetails.listOfViolations!, id: \.self) { string in
+                            ForEach(buildingDetailVM.buildingDetails.listOfViolations!, id: \.self) { string in
                                 Label(string.vo.prefix(12), systemImage: "hand.tap")
                                     .frame(width: 200)
                                     .padding(.horizontal, 40)
@@ -101,9 +97,9 @@ struct BuildingDetailCardView: View {
                     }
                     .groupBoxStyle(DefaultGroupBoxStyle())
                     
-                    GroupBox(label: Label("3 Notices Found", systemImage: "signpost.right")) {
+                    GroupBox(label: Label("\(buildingDetailVM.buildingDetails.notices.activenotices) Notices Found", systemImage: "signpost.right")) {
                         VStack(alignment: .leading) {
-                            ForEach(buildingDetails.listOfViolations!, id: \.self) { string in
+                            ForEach(buildingDetailVM.buildingDetails.listOfViolations!, id: \.self) { string in
                                 Label(string.vo.prefix(12), systemImage: "hand.tap")
                                     .frame(width: 200)
                                     .padding(.horizontal, 40)
@@ -135,5 +131,5 @@ struct FilledButtonStyle: ButtonStyle {
 }
 
 #Preview {
-    BuildingDetailCardView()
+    BuildingDetailCardView("1076262", "BOGUS ADDRESS")
 }
