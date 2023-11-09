@@ -30,10 +30,12 @@ struct BuildingDetailCardView: View {
                     GroupBox(label: Label("Building Information", systemImage: "building.columns")) {
                         VStack(alignment: .leading) {
                             HStack {
-                                Text("Address: ")
-                                Spacer()
                                 Text("\(buildingDetailVM.building.address)")
+                                    .bold()
+                                    .frame(maxWidth: .infinity, alignment: .center)
                             }
+                            Spacer()
+                            Divider()
                             HStack {
                                 Text("BIN: ")
                                 Spacer()
@@ -85,12 +87,13 @@ struct BuildingDetailCardView: View {
                     GroupBox(label: Label("\(buildingDetailVM.buildingDetails.violations.activeviolations) Violations Found", systemImage: "signpost.left")) {
                         VStack(alignment: .leading) {
                             ForEach(buildingDetailVM.buildingDetails.listOfViolations!, id: \.self) { string in
-                                Label(string.vo.prefix(12), systemImage: "hand.tap")
-                                    .frame(width: 200)
-                                    .padding(.horizontal, 40)
-                                    .padding(.vertical, 5)
+                                Label(string.vo.prefix(23), systemImage: "hand.tap")
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.horizontal, 2)
+                                    .padding(.vertical, 3)
                                     .background(Color(red: 151/255, green: 171/255, blue: 179/255))
                                     .cornerRadius(4)
+                                Divider()
                             }
                         }
                         .padding()
@@ -99,13 +102,14 @@ struct BuildingDetailCardView: View {
                     
                     GroupBox(label: Label("\(buildingDetailVM.buildingDetails.notices.activenotices) Notices Found", systemImage: "signpost.right")) {
                         VStack(alignment: .leading) {
-                            ForEach(buildingDetailVM.buildingDetails.listOfViolations!, id: \.self) { string in
-                                Label(string.vo.prefix(12), systemImage: "hand.tap")
-                                    .frame(width: 200)
-                                    .padding(.horizontal, 40)
-                                    .padding(.vertical, 5)
+                            ForEach(buildingDetailVM.buildingDetails.listOfNotices!, id: \.self) { string in
+                                Label(string.nov.prefix(23), systemImage: "hand.tap")
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.horizontal, 2)
+                                    .padding(.vertical, 3)
                                     .background(Color(red: 151/255, green: 171/255, blue: 179/255))
                                     .cornerRadius(4)
+                                Divider()
                             }
                         }
                         .padding()
