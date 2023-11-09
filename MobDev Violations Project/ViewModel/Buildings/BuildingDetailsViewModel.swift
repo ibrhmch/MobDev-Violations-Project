@@ -7,7 +7,13 @@
 
 import Foundation
 
-class BuildingDetailsViewModel {
+class BuildingDetailsViewModel: ObservableObject {
+    @Published var buildingDetails = BuildingDetailsResponse()
+    @Published var building: Building
+    
+    init(_ bin_id: String, _ address: String){
+        self.building = Building(bin_id: bin_id, address: address)
+    }
     
     func getBuildingByID(bin_id: String = "") async -> BuildingDetailsResponse? {
         do {
