@@ -8,11 +8,77 @@
 import SwiftUI
 
 struct VOsDetailsView: View {
+    var bin_id: String
+    var address: String
+    var date: String
+    var status: Bool
+    var vo: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+            NavigationView {
+                VStack {
+                    // Search bar placeholder
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        Text("Search")
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                    .padding()
+
+                    GroupBox (label: Label("Violation Order Details", systemImage: "signpost.left")) {
+                        Divider()
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                Text("Issued On:")
+                                Spacer()
+                                Text("\(date)")
+                            }
+                            HStack {
+                                Text("BIN:")
+                                Spacer()
+                                Text("\(bin_id)")
+                            }
+                            HStack {
+                                Text("Status:")
+                                Spacer()
+                                Text("\(status ? "Active" : "Dismissed")")
+                            }
+                        }
+                        .padding()
+                    }
+                    .padding()
+                    
+                    Divider()
+                    
+                    Button(action: {
+                    }) {
+                        HStack {
+                            Image(systemName: "doc.text.viewfinder")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 24)
+                            Text("View Receipt")
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                    }
+                    .padding()
+
+                    Spacer()
+                }
+                .navigationBarTitle("Viewing Violation Order", displayMode: .inline)
+                .padding()
+            }
+        }
 }
 
 #Preview {
-    VOsDetailsView()
+    VOsDetailsView(bin_id: "1091233", address: "Rock 10", date: "November 21, 2023", status: true, vo: "Random Number")
 }
