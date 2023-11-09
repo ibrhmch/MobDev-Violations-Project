@@ -90,9 +90,9 @@ struct BuildingDetailCardView: View {
                                 Label(string.vo.prefix(23), systemImage: "hand.tap")
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .padding(.horizontal, 2)
-                                    .padding(.vertical, 3)
+                                    .padding(.vertical, 8)
                                     .background(Color(red: 151/255, green: 171/255, blue: 179/255))
-                                    .cornerRadius(4)
+                                    .cornerRadius(7)
                                 Divider()
                             }
                         }
@@ -106,9 +106,9 @@ struct BuildingDetailCardView: View {
                                 Label(string.nov.prefix(23), systemImage: "hand.tap")
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .padding(.horizontal, 2)
-                                    .padding(.vertical, 3)
+                                    .padding(.vertical, 8)
                                     .background(Color(red: 151/255, green: 171/255, blue: 179/255))
-                                    .cornerRadius(4)
+                                    .cornerRadius(7)
                                 Divider()
                             }
                         }
