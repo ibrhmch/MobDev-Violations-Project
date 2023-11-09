@@ -117,6 +117,11 @@ struct BuildingDetailCardView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(){
+            Task{
+                await buildingDetailVM.buildingDetails = buildingDetailVM.getBuildingByID(bin_id: self.bin_id) ?? BuildingDetailsResponse()
+            }
+        }
     }
 }
 
