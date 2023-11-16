@@ -44,6 +44,8 @@ struct VOsTabView: View {
                     }
                 }
                 
+                Spacer()
+                
                 if ((violationsVM.listOfViolations) != nil){
                     List(searchResults, id: \.self) { result in
                         NavigationLink(destination:                                 VOsDetailsView(

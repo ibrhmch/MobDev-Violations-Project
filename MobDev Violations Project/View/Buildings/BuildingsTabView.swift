@@ -43,6 +43,8 @@ struct BuildingsTabView: View {
                     }
                 }
                 
+                Spacer()
+                
                 if (buildingsVM.buildingsFetched){
                     List(searchResults, id: \.self) { result in
                         NavigationLink(destination: BuildingDetailCardView(result.bin_id, result.address)) {
