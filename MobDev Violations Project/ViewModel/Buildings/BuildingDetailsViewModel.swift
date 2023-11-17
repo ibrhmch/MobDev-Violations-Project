@@ -7,15 +7,17 @@
 
 import Foundation
 
-class BuildingDetailsViewModel: ObservableObject {
-    @Published var buildingDetails = BuildingDetailsResponse()
-    @Published var building: Building
+class BuildingDetailsViewModel {
+    var buildingDetails = BuildingDetailsResponse()
+    var buildingDetailsAreSet = false
     
-    init(_ bin_id: String, _ address: String){
-        self.building = Building(bin_id: bin_id, address: address)
+    func setBuilding(_ bin_id: String) {
+        Task{@MainActor in
+            buildingDetails = await getBuildingByID(bin_id: bin_id) ?? BuildingDetailsResponse()
+        }
     }
     
-    func getBuildingByID(bin_id: String = "") async -> BuildingDetailsResponse? {
+    func getBuildingByID(bin_id: String) async -> BuildingDetailsResponse? {
         do {
             guard let url = URL(string: "http://127.0.0.1:5000/get_building_data?bin_id=\(bin_id)") else {
                 print("Invalid URL")
@@ -33,7 +35,7 @@ class BuildingDetailsViewModel: ObservableObject {
             return building
         } catch {
             print("Network Request or Decoding Failed: \(error)")
-            return nil
         }
+        return nil
     }
 }

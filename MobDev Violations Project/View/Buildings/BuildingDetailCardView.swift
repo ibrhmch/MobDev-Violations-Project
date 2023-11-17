@@ -8,122 +8,137 @@
 import SwiftUI
 
 struct BuildingDetailCardView: View {
-    @State var bin_id: String
-    @State var address: String
-    @ObservedObject var buildingDetailVM: BuildingDetailsViewModel
+    var building: Building
+    var buildingDetailVM = BuildingDetailsViewModel()
+    @State var buildingDetails = BuildingDetailsResponse()
+    @State var firstAppear: Bool = true
     
     init(_ bin_id: String, _ address: String){
-        self.bin_id = bin_id
-        self.address = address
-        self.buildingDetailVM = BuildingDetailsViewModel(bin_id, address)
+        self.building = Building(bin_id: bin_id, address: address)
     }
     
     var body: some View {
         VStack{
-            Text("\(buildingDetailVM.building.bin_id)")
-                .font(.subheadline)
-                .padding(.bottom, 20)
-            
-            ScrollView{
-                VStack(alignment: .center, spacing: 20) {
-                    
-                    GroupBox(label: Label("Building Information", systemImage: "building.columns")) {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("\(buildingDetailVM.building.address)")
-                                    .bold()
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                            }
-                            Spacer()
-                            Divider()
-                            HStack {
-                                Text("BIN: ")
-                                Spacer()
-                                Text("\(buildingDetailVM.building.bin_id)")
-                            }
-                            HStack {
-                                Text("Block: ")
-                                Spacer()
-                                Text("static")
-                            }
-                        }
-                        .padding()
-                    }
-                    .groupBoxStyle(DefaultGroupBoxStyle())
-                    
-                    Button(action: {
-                        // To be added later
-                    }) {
-                        Label("View in Maps", systemImage: "map.fill")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .padding()
-                    .background(Color(red: 0.9, green: 0.9, blue: 0.9))
-                    .cornerRadius(8)
-                    Button(action: {
-                        // Subscribe action
-                    }) {
-                        Text("Enable Notifications")
-                    }
-                    .buttonStyle(FilledButtonStyle())
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        HStack {
-                            Text("# of Violation Orders:")
-                            Spacer()
-                            Text("\(buildingDetailVM.buildingDetails.violations.activeviolations)")
-                        }
+            if firstAppear {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+            }
+            else
+            {
+                Text("\(building.bin_id)")
+                    .font(.subheadline)
+                    .padding(.bottom, 20)
+                
+                ScrollView{
+                    VStack(alignment: .center, spacing: 20) {
                         
-                        HStack {
-                            Text("# of Notice of Violations:")
-                            Spacer()
-                            Text("\(buildingDetailVM.buildingDetails.notices.activenotices)")
+                        GroupBox(label: Label("Building Information", systemImage: "building.columns")) {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text("\(building.address)")
+                                        .bold()
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                }
+                                Spacer()
+                                Divider()
+                                HStack {
+                                    Text("BIN: ")
+                                    Spacer()
+                                    Text("\(building.bin_id)")
+                                }
+                                HStack {
+                                    Text("Block: ")
+                                    Spacer()
+                                    Text("static")
+                                }
+                            }
+                            .padding()
                         }
+                        .groupBoxStyle(DefaultGroupBoxStyle())
+                        
+                        Button(action: {
+                            // To be added later
+                        }) {
+                            Label("View in Maps", systemImage: "map.fill")
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .padding()
+                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
+                        .cornerRadius(8)
+                        Button(action: {
+                            // Subscribe action
+                        }) {
+                            Text("Enable Notifications")
+                        }
+                        .buttonStyle(FilledButtonStyle())
+                        
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                Text("# of Violation Orders:")
+                                Spacer()
+                                Text("\(buildingDetailVM.buildingDetails.violations.activeviolations)")
+                            }
+                            
+                            HStack {
+                                Text("# of Notice of Violations:")
+                                Spacer()
+                                Text("\(buildingDetailVM.buildingDetails.notices.activenotices)")
+                            }
+                        }
+                        .padding()
+                        
+                        Spacer()
+                        
+                        GroupBox(label: Label("\(buildingDetailVM.buildingDetails.violations.activeviolations) Violations Found", systemImage: "signpost.left")) {
+                            VStack(alignment: .leading) {
+                                ForEach(buildingDetailVM.buildingDetails.listOfViolations!, id: \.self) { vo in
+                                    
+                                    NavigationLink(destination:                                 VOsDetailsView(
+                                            bin_id: building.bin_id,
+                                            date: vo.date,
+                                            status: vo.status,
+                                            vo: vo.vo))
+                                            {
+                                        Label(vo.vo.prefix(23), systemImage: "hand.tap")
+                                            .frame(maxWidth: .infinity, alignment: .center)
+                                            .padding(.horizontal, 2)
+                                            .padding(.vertical, 8)
+                                            .background(Color(red: 151/255, green: 171/255, blue: 179/255))
+                                            .cornerRadius(7)
+                                        Divider()
+                                    }
+                                }
+                            }
+                            .padding()
+                        }
+                        .groupBoxStyle(DefaultGroupBoxStyle())
+                        
+                        GroupBox(label: Label("\(buildingDetailVM.buildingDetails.notices.activenotices) Notices Found", systemImage: "signpost.right")) {
+                            VStack(alignment: .leading) {
+                                ForEach(buildingDetailVM.buildingDetails.listOfNotices!, id: \.self) { string in
+                                    Label(string.nov.prefix(23), systemImage: "hand.tap")
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .padding(.horizontal, 2)
+                                        .padding(.vertical, 8)
+                                        .background(Color(red: 151/255, green: 171/255, blue: 179/255))
+                                        .cornerRadius(7)
+                                    Divider()
+                                }
+                            }
+                            .padding()
+                        }
+                        .groupBoxStyle(DefaultGroupBoxStyle())
+
                     }
                     .padding()
-                    
-                    Spacer()
-                    
-                    GroupBox(label: Label("\(buildingDetailVM.buildingDetails.violations.activeviolations) Violations Found", systemImage: "signpost.left")) {
-                        VStack(alignment: .leading) {
-                            ForEach(buildingDetailVM.buildingDetails.listOfViolations!, id: \.self) { string in
-                                Label(string.vo.prefix(23), systemImage: "hand.tap")
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    .padding(.horizontal, 2)
-                                    .padding(.vertical, 8)
-                                    .background(Color(red: 151/255, green: 171/255, blue: 179/255))
-                                    .cornerRadius(7)
-                                Divider()
-                            }
-                        }
-                        .padding()
-                    }
-                    .groupBoxStyle(DefaultGroupBoxStyle())
-                    
-                    GroupBox(label: Label("\(buildingDetailVM.buildingDetails.notices.activenotices) Notices Found", systemImage: "signpost.right")) {
-                        VStack(alignment: .leading) {
-                            ForEach(buildingDetailVM.buildingDetails.listOfNotices!, id: \.self) { string in
-                                Label(string.nov.prefix(23), systemImage: "hand.tap")
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    .padding(.horizontal, 2)
-                                    .padding(.vertical, 8)
-                                    .background(Color(red: 151/255, green: 171/255, blue: 179/255))
-                                    .cornerRadius(7)
-                                Divider()
-                            }
-                        }
-                        .padding()
-                    }
-                    .groupBoxStyle(DefaultGroupBoxStyle())
-
                 }
-                .padding()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear(){
-            Task{
-                await buildingDetailVM.buildingDetails = buildingDetailVM.getBuildingByID(bin_id: self.bin_id) ?? BuildingDetailsResponse()
+        .task{
+            if firstAppear{
+                
+                firstAppear = false
             }
         }
     }
