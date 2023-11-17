@@ -14,7 +14,7 @@ class NOVSearchViewModel: ObservableObject {
     
     func getSimilarNOVs(_ nov: String) async {
         do {
-            guard let url = URL(string: "http://127.0.0.1:5000/get_similar_novs?nov=\(nov)") else {
+            guard let url = URL(string: "https://d88a-2601-280-5c82-c970-11be-e5e6-dcb5-d028.ngrok-free.app/get_similar_novs?nov=\(nov)") else {
                 print("Invalid URL")
                 self.listOfNovs = nil
                 return
