@@ -120,16 +120,23 @@ struct BuildingDetailCardView: View {
                         GroupBox(label: Label("\(viewModel.buildingDetails.listOfNotices!.count) Notices Found", systemImage: "signpost.right")) {
                             VStack(alignment: .leading) {
                                 ForEach(viewModel.buildingDetails.listOfNotices!, id: \.self) { nov in
-                                    Label(nov.nov.prefix(23), systemImage: "hand.tap")
-                                        .font(.system(size: 16, weight: .medium))
-                                        .foregroundColor(.black)
-                                        .frame(maxWidth: .infinity, alignment: .center)
-                                        .padding(.horizontal, 10)
-                                        .padding(.vertical, 10)
-                                        .background(Color(red: 151/255, green: 171/255, blue: 179/255))
-                                        .cornerRadius(7)
-                                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
                                     
+                                    NavigationLink(destination:                                 NOVsDetailView(
+                                            bin_id: building.bin_id,
+                                            date: nov.date ?? "",
+                                            status: nov.status,
+                                            nov: nov.nov))
+                                    {
+                                        Label(nov.nov.prefix(23), systemImage: "hand.tap")
+                                            .font(.system(size: 16, weight: .medium))
+                                            .foregroundColor(.black)
+                                            .frame(maxWidth: .infinity, alignment: .center)
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 10)
+                                            .background(Color(red: 151/255, green: 171/255, blue: 179/255))
+                                            .cornerRadius(7)
+                                            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+                                    }
                                     Divider()
                                         .padding(.vertical, 5)
                                 }
