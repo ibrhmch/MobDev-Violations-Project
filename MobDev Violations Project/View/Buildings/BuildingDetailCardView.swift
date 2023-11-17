@@ -108,9 +108,9 @@ struct BuildingDetailCardView: View {
                                             .background(Color(red: 151/255, green: 171/255, blue: 179/255))
                                             .cornerRadius(7)
                                             .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
-                                        Divider()
-                                            .padding(.vertical, 5)
                                     }
+                                    Divider()
+                                        .padding(.vertical, 5)
                                 }
                             }
                             .padding()
@@ -129,6 +129,7 @@ struct BuildingDetailCardView: View {
                                         .background(Color(red: 151/255, green: 171/255, blue: 179/255))
                                         .cornerRadius(7)
                                         .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+                                    
                                     Divider()
                                         .padding(.vertical, 5)
                                 }

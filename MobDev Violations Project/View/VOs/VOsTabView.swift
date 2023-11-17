@@ -28,7 +28,6 @@ struct VOsTabView: View {
                     TextField("Search Violations", text: $searchText)
                         .onChange(of: searchText) {
                             recentSearches.append(searchText)
-                            print(recentSearches)
                             Task{
                                 await violationsVM.getSimilarViolations(searchText)
                             }
