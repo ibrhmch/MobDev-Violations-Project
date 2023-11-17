@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class ViolationsSearchViewModel: ObservableObject {
     @Published var listOfViolations: [ViolationOrder]?
     @Published var violationsFetched: Bool = false

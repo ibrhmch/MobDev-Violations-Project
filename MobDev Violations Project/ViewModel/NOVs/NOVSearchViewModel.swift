@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class NOVSearchViewModel: ObservableObject {
     @Published var listOfNovs: [NoticeOfViolations]?
     @Published var NOVsFetched: Bool = false
