@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BuildingDetailCardView: View {
     var building: Building
-    var viewModel = BuildingDetailsViewModel()
+    @ObservedObject var viewModel = BuildingDetailsViewModel()
     @State var buildingDetails = BuildingDetailsResponse()
     @State var firstAppear: Bool = true
     
@@ -74,13 +74,13 @@ struct BuildingDetailCardView: View {
                         
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
-                                Text("# of Violation Orders:")
+                                Text("# of Active VOs:")
                                 Spacer()
                                 Text("\(viewModel.buildingDetails.violations.activeviolations)")
                             }
                             
                             HStack {
-                                Text("# of Notice of Violations:")
+                                Text("# of Active NOVs:")
                                 Spacer()
                                 Text("\(viewModel.buildingDetails.notices.activenotices)")
                             }
@@ -89,7 +89,7 @@ struct BuildingDetailCardView: View {
                         
                         Spacer()
                         
-                        GroupBox(label: Label("\(viewModel.buildingDetails.violations.activeviolations) Violations Found", systemImage: "signpost.left")) {
+                        GroupBox(label: Label("\(viewModel.buildingDetails.listOfViolations!.count) Violations Found", systemImage: "signpost.left")) {
                             VStack(alignment: .leading) {
                                 ForEach(viewModel.buildingDetails.listOfViolations!, id: \.self) { vo in
                                     
@@ -100,12 +100,16 @@ struct BuildingDetailCardView: View {
                                             vo: vo.vo))
                                             {
                                         Label(vo.vo.prefix(23), systemImage: "hand.tap")
+                                            .font(.system(size: 16, weight: .medium))
+                                            .foregroundColor(.black)
                                             .frame(maxWidth: .infinity, alignment: .center)
-                                            .padding(.horizontal, 2)
-                                            .padding(.vertical, 8)
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 10)
                                             .background(Color(red: 151/255, green: 171/255, blue: 179/255))
                                             .cornerRadius(7)
+                                            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
                                         Divider()
+                                            .padding(.vertical, 5)
                                     }
                                 }
                             }
@@ -113,16 +117,20 @@ struct BuildingDetailCardView: View {
                         }
                         .groupBoxStyle(DefaultGroupBoxStyle())
                         
-                        GroupBox(label: Label("\(viewModel.buildingDetails.notices.activenotices) Notices Found", systemImage: "signpost.right")) {
+                        GroupBox(label: Label("\(viewModel.buildingDetails.listOfNotices!.count) Notices Found", systemImage: "signpost.right")) {
                             VStack(alignment: .leading) {
-                                ForEach(viewModel.buildingDetails.listOfNotices!, id: \.self) { string in
-                                    Label(string.nov.prefix(23), systemImage: "hand.tap")
+                                ForEach(viewModel.buildingDetails.listOfNotices!, id: \.self) { nov in
+                                    Label(nov.nov.prefix(23), systemImage: "hand.tap")
+                                        .font(.system(size: 16, weight: .medium))
+                                        .foregroundColor(.black)
                                         .frame(maxWidth: .infinity, alignment: .center)
-                                        .padding(.horizontal, 2)
-                                        .padding(.vertical, 8)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 10)
                                         .background(Color(red: 151/255, green: 171/255, blue: 179/255))
                                         .cornerRadius(7)
+                                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
                                     Divider()
+                                        .padding(.vertical, 5)
                                 }
                             }
                             .padding()
@@ -154,5 +162,5 @@ struct FilledButtonStyle: ButtonStyle {
 }
 
 #Preview {
-    BuildingDetailCardView("1076262", "BOGUS ADDRESS")
+    BuildingDetailCardView("1034198", "BOGUS ADDRESS")
 }

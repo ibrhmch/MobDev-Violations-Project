@@ -7,9 +7,9 @@
 
 import Foundation
 
-class BuildingDetailsViewModel {
-    var buildingDetails = BuildingDetailsResponse()
-    var buildingDetailsAreSet = false
+class BuildingDetailsViewModel: ObservableObject {
+    @Published var buildingDetails = BuildingDetailsResponse()
+    @Published var buildingDetailsAreSet = false
     
     func setBuilding(_ bin_id: String) {
         Task{@MainActor in
