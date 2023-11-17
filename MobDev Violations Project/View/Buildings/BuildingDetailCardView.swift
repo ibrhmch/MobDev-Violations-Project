@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BuildingDetailCardView: View {
     var building: Building
-    var buildingDetailVM = BuildingDetailsViewModel()
+    var viewModel = BuildingDetailsViewModel()
     @State var buildingDetails = BuildingDetailsResponse()
     @State var firstAppear: Bool = true
     
@@ -20,8 +20,8 @@ struct BuildingDetailCardView: View {
     var body: some View {
         VStack{
             if firstAppear {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
             }
             else
             {
@@ -76,26 +76,26 @@ struct BuildingDetailCardView: View {
                             HStack {
                                 Text("# of Violation Orders:")
                                 Spacer()
-                                Text("\(buildingDetailVM.buildingDetails.violations.activeviolations)")
+                                Text("\(viewModel.buildingDetails.violations.activeviolations)")
                             }
                             
                             HStack {
                                 Text("# of Notice of Violations:")
                                 Spacer()
-                                Text("\(buildingDetailVM.buildingDetails.notices.activenotices)")
+                                Text("\(viewModel.buildingDetails.notices.activenotices)")
                             }
                         }
                         .padding()
                         
                         Spacer()
                         
-                        GroupBox(label: Label("\(buildingDetailVM.buildingDetails.violations.activeviolations) Violations Found", systemImage: "signpost.left")) {
+                        GroupBox(label: Label("\(viewModel.buildingDetails.violations.activeviolations) Violations Found", systemImage: "signpost.left")) {
                             VStack(alignment: .leading) {
-                                ForEach(buildingDetailVM.buildingDetails.listOfViolations!, id: \.self) { vo in
+                                ForEach(viewModel.buildingDetails.listOfViolations!, id: \.self) { vo in
                                     
                                     NavigationLink(destination:                                 VOsDetailsView(
                                             bin_id: building.bin_id,
-                                            date: vo.date,
+                                            date: vo.date ?? "",
                                             status: vo.status,
                                             vo: vo.vo))
                                             {
@@ -113,9 +113,9 @@ struct BuildingDetailCardView: View {
                         }
                         .groupBoxStyle(DefaultGroupBoxStyle())
                         
-                        GroupBox(label: Label("\(buildingDetailVM.buildingDetails.notices.activenotices) Notices Found", systemImage: "signpost.right")) {
+                        GroupBox(label: Label("\(viewModel.buildingDetails.notices.activenotices) Notices Found", systemImage: "signpost.right")) {
                             VStack(alignment: .leading) {
-                                ForEach(buildingDetailVM.buildingDetails.listOfNotices!, id: \.self) { string in
+                                ForEach(viewModel.buildingDetails.listOfNotices!, id: \.self) { string in
                                     Label(string.nov.prefix(23), systemImage: "hand.tap")
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .padding(.horizontal, 2)
@@ -136,10 +136,9 @@ struct BuildingDetailCardView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .task{
-            if firstAppear{
-                
-                firstAppear = false
-            }
+            viewModel.setBuilding(building.bin_id)
+            buildingDetails = viewModel.buildingDetails
+            firstAppear = false
         }
     }
 }

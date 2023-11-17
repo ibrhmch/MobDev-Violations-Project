@@ -14,6 +14,7 @@ class BuildingDetailsViewModel {
     func setBuilding(_ bin_id: String) {
         Task{@MainActor in
             buildingDetails = await getBuildingByID(bin_id: bin_id) ?? BuildingDetailsResponse()
+            buildingDetailsAreSet = true
         }
     }
     
@@ -32,6 +33,7 @@ class BuildingDetailsViewModel {
             }
             
             let building = try JSONDecoder().decode(BuildingDetailsResponse.self, from: data)
+            print("response received")
             return building
         } catch {
             print("Network Request or Decoding Failed: \(error)")

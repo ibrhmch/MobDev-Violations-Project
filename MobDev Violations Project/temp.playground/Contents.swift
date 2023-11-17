@@ -26,7 +26,7 @@ struct NoticeOfViolations: Decodable {
 }
 
 struct ViolationOrder: Decodable {
-    let bin_id: String
+    let bin: String
     let date: String
     let status: Bool
     let vo: String
@@ -120,3 +120,30 @@ struct BuildingDetailsResponse: Decodable {
 //upper
 //upper.lowercased()
 //
+
+func getBuildingByID(bin_id: String) async -> BuildingDetailsResponse? {
+    do {
+        guard let url = URL(string: "http://127.0.0.1:5000/get_building_data?bin_id=\(bin_id)") else {
+            print("Invalid URL")
+            return nil
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            print("Invalid Response or Status Code not 200")
+            return nil
+        }
+        
+        let building = try JSONDecoder().decode(BuildingDetailsResponse.self, from: data)
+        print("response received")
+        return building
+    } catch {
+        print("Network Request or Decoding Failed: \(error)")
+    }
+    return nil
+}
+
+Task{
+    await getBuildingByID(bin_id: "1023455")
+}
