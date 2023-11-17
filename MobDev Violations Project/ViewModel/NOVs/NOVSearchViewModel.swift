@@ -11,7 +11,7 @@ class NOVSearchViewModel: ObservableObject {
     @Published var listOfNovs: [NoticeOfViolations]?
     @Published var NOVsFetched: Bool = false
     
-    func getSimilarViolations(_ nov: String) async {
+    func getSimilarNOVs(_ nov: String) async {
         do {
             guard let url = URL(string: "http://127.0.0.1:5000/get_similar_nov?nov=\(nov)") else {
                 print("Invalid URL")
