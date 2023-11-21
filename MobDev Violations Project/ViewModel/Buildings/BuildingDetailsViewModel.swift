@@ -20,7 +20,7 @@ class BuildingDetailsViewModel: ObservableObject {
     
     func getBuildingByID(bin_id: String) async -> BuildingDetailsResponse? {
         do {
-            guard let url = URL(string: "https://61c3-2601-280-5c82-c970-e8a7-92e9-e75c-c02b.ngrok-free.app/get_building_data?bin_id=\(bin_id)") else {
+            guard let url = URL(string: "https://d3ec-2601-280-5c82-c970-f013-c8e0-39cc-4607.ngrok-free.app/get_building_data?bin_id=\(bin_id)") else {
                 print("Invalid URL")
                 return nil
             }
