@@ -7,6 +7,8 @@
 
 import Foundation
 
+let apiEndPoint = "http://127.0.0.1:5000"
+
 func getDateFromString(_ dateString: String) -> String {
     let inputFormatter = DateFormatter()
     inputFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss 'GMT'"

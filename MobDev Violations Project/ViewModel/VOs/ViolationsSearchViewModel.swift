@@ -15,7 +15,7 @@ class ViolationsSearchViewModel: ObservableObject {
     
     func getAllViolations() async {
         do {
-            guard let url = URL(string: "https://d3ec-2601-280-5c82-c970-f013-c8e0-39cc-4607.ngrok-free.app/get_all_violations") else {
+            guard let url = URL(string: "\(apiEndPoint)/get_all_violations") else {
                 print("Invalid URL")
                 self.listOfViolations = nil
                 return
