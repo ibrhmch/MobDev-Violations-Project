@@ -17,7 +17,7 @@ struct VOsTabView: View {
         if searchText.isEmpty {
             return violationsVM.listOfViolations!
         } else {
-            return (violationsVM.listOfViolations?.filter { $0.vo.contains(searchText.lowercased()) })!
+            return (violationsVM.listOfViolations?.filter { $0.vo.contains(searchText.uppercased()) })!
         }
     }
     
