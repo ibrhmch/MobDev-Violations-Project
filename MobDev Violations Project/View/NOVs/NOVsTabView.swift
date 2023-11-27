@@ -17,7 +17,7 @@ struct NOVsTabView: View {
         if searchText.isEmpty {
             return novsVM.listOfNovs!
         } else {
-            return (novsVM.listOfNovs?.filter { $0.nov.contains(searchText.lowercased()) })!
+            return (novsVM.listOfNovs?.filter { $0.nov.contains(searchText.uppercased()) })!
         }
     }
     
