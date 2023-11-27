@@ -42,7 +42,7 @@ class ViolationsSearchViewModel: ObservableObject {
     
     func getSimilarViolations(_ vo: String) async {
         do {
-            guard let url = URL(string: "http://127.0.0.1:5000/get_similar_violations?vo=\(vo)") else {
+            guard let url = URL(string: "\(apiEndPoint)/get_similar_violations?vo=\(vo)") else {
                 print("Invalid URL")
                 self.listOfViolations = nil
                 return
