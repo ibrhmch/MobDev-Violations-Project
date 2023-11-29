@@ -50,6 +50,11 @@ struct BuildingsTabView: View {
                         NavigationLink(destination: BuildingDetailCardView(result.bin_id, result.address)) {
                             Text("\(result.bin_id)")
                         }
+                        .padding()
+                        .background(.gray)
+                        .foregroundColor(.black)
+                        .font(.headline)
+                        .cornerRadius(10)
                     }
                 }
             }
