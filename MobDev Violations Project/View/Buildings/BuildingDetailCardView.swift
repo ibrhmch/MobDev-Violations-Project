@@ -214,7 +214,7 @@ struct BuildingDetailCardView: View {
         .task{
             viewModel.setBuilding(building.bin_id)
             buildingDetails = viewModel.buildingDetails
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            try? await Task.sleep(nanoseconds: 500_000_000)
             firstAppear = false
         }
     }
