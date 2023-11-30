@@ -48,12 +48,21 @@ struct BuildingsTabView: View {
                 if (buildingsVM.buildingsFetched){
                     List(searchResults, id: \.self) { result in
                         NavigationLink(destination: BuildingDetailCardView(result.bin_id, result.address)) {
-                            Text("\(result.bin_id)")
+                            VStack{
+                                HStack{
+                                    Text("\(result.bin_id)")
+                                        .font(.headline)
+                                    Spacer()
+                                }
+                                HStack{
+                                    Text("\(result.address)")
+                                    Spacer()
+                                }
+                            }
                         }
                         .padding()
-                        .background(.gray)
+                        .background(.bar)
                         .foregroundColor(.black)
-                        .font(.headline)
                         .cornerRadius(10)
                     }
                 }
