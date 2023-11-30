@@ -58,7 +58,6 @@ struct VOsTabView: View {
                     }
                 }
             }
-            .navigationBarTitle("Violations")
         }
     }
 }
