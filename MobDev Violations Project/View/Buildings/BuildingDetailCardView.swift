@@ -165,9 +165,9 @@ struct BuildingDetailCardView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .task{
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
             viewModel.setBuilding(building.bin_id)
             buildingDetails = viewModel.buildingDetails
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
             firstAppear = false
         }
     }
