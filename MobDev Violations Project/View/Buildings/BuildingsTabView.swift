@@ -17,9 +17,12 @@ struct BuildingsTabView: View {
     
     var searchResults: [Building] {
         if searchText.isEmpty {
-            return buildingsVM.listOfBuildings!
+            return buildingsVM.listOfBuildings ?? []
         } else {
-            return (buildingsVM.listOfBuildings?.filter { $0.bin_id.contains(searchText.lowercased()) })!
+            return buildingsVM.listOfBuildings?.filter { building in
+                building.bin_id.lowercased().contains(searchText.lowercased()) ||
+                building.address.lowercased().contains(searchText.lowercased())
+            } ?? []
         }
     }
     
