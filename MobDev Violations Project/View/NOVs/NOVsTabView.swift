@@ -25,7 +25,7 @@ struct NOVsTabView: View {
         NavigationView {
             VStack {
                 HStack {
-                    TextField("Search Notice of Violations", text: $searchText)
+                    TextField("Filter Notice of Violations", text: $searchText)
                         .onChange(of: searchText) {
                             recentSearches.append(searchText)
                             Task{
@@ -33,7 +33,7 @@ struct NOVsTabView: View {
                             }
                         }
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+                        .padding(.horizontal)
 
                     if !searchText.isEmpty {
                         Button("Cancel") {
@@ -73,9 +73,9 @@ struct NOVsTabView: View {
                     }
                 }
             }
+            .navigationBarTitle("Search Notice of Violations", displayMode: .inline)
         }
     }
-
 }
 
 #Preview {
