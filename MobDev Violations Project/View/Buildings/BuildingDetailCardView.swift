@@ -61,7 +61,6 @@ struct BuildingDetailCardView: View {
             {
                 Text("\(building.bin_id)")
                     .font(.subheadline)
-                    .padding(.bottom, 20)
                 
                 ScrollView{
                     VStack(alignment: .center, spacing: 20) {
