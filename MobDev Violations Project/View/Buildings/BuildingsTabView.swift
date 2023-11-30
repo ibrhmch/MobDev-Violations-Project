@@ -49,15 +49,11 @@ struct BuildingsTabView: View {
                     List(searchResults, id: \.self) { result in
                         NavigationLink(destination: BuildingDetailCardView(result.bin_id, result.address)) {
                             VStack{
-                                HStack{
-                                    Text("\(result.bin_id)")
-                                        .font(.headline)
-                                    Spacer()
-                                }
-                                HStack{
-                                    Text("\(result.address)")
-                                    Spacer()
-                                }
+                                Text("\(result.bin_id)")
+                                    .font(.headline)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text("\(result.address)")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
                         .padding()
