@@ -58,20 +58,23 @@ struct NOVsDetailView: View {
                     
                     Divider()
                     
+                    // NOV Button
                     Button(action: {
+                        if let url = URL(string: "https://fires.fdnycloud.org/CitizenAccess/Cap/CapDetail.aspx?Module=BFP&TabName=BFP&capID1=95F05&capID2=00000&capID3=0QPOW&agencyCode=FDNY&IsToShowInspection=") {
+                            if UIApplication.shared.canOpenURL(url) {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
+                        }
                     }) {
                         HStack {
-                            Image(systemName: "doc.text.viewfinder")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 24)
-                            Text("View Receipt")
+                            Label("Open Receipt", systemImage: "safari.fill")
                         }
                         .frame(maxWidth: .infinity)
+                        .buttonStyle(PlainButtonStyle())
                         .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
+                        .foregroundColor(.black)
+                        .cornerRadius(8)
                     }
                     .padding()
 
