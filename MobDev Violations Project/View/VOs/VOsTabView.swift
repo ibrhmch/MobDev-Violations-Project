@@ -25,7 +25,7 @@ struct VOsTabView: View {
         NavigationView {
             VStack {
                 HStack {
-                    TextField("Search Violations", text: $searchText)
+                    TextField("Filter Violations", text: $searchText)
                         .onChange(of: searchText) {
                             recentSearches.append(searchText)
                             Task{
@@ -33,7 +33,7 @@ struct VOsTabView: View {
                             }
                         }
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+                        .padding(.horizontal)
 
                     if !searchText.isEmpty {
                         Button("Cancel") {
@@ -73,6 +73,7 @@ struct VOsTabView: View {
                     }
                 }
             }
+            .navigationBarTitle("Search Violation Orders", displayMode: .inline)
         }
     }
 }
