@@ -63,7 +63,7 @@ struct NOVsTabView: View {
                                         
                                         Circle()
                                             .foregroundColor(result.status ? .green : .purple)
-                                            .frame(width: 20)
+                                            .frame(width: 10)
                                             .padding()
                                     }
                                     .background(.bar)
