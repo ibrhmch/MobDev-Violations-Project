@@ -13,6 +13,23 @@ struct BuildingDetailCardView: View {
     @ObservedObject var viewModel = BuildingDetailsViewModel()
     @State var buildingDetails = BuildingDetailsResponse()
     @State var firstAppear: Bool = true
+    @State var selectedFilterOption: Int = 1
+    
+    var filteredVOs: [ViolationOrder] {
+        if (selectedFilterOption == 1) {
+            return viewModel.buildingDetails.listOfViolations ?? []
+        } else if (selectedFilterOption == 2) {
+            return viewModel.buildingDetails.listOfViolations?.filter { vo in
+                vo.status == false
+            } ?? []
+        } else if (selectedFilterOption == 0) {
+            return viewModel.buildingDetails.listOfViolations?.filter { vo in
+                vo.status == true
+            } ?? []
+        } else {
+            return []
+        }
+    }
     
     init(_ bin_id: String, _ address: String){
         self.building = Building(bin_id: bin_id, address: address)
@@ -105,9 +122,11 @@ struct BuildingDetailCardView: View {
                         
                         Spacer()
                         
-                        GroupBox(label: Label("\(viewModel.buildingDetails.listOfViolations!.count) Violations Found", systemImage: "signpost.left")) {
+                        FilterBar(selectedFilterOption: $selectedFilterOption)
+                        
+                        GroupBox(label: Label("\(filteredVOs.count) Violations Found", systemImage: "signpost.left")) {
                             VStack(alignment: .leading) {
-                                ForEach(viewModel.buildingDetails.listOfViolations!, id: \.self) { vo in
+                                ForEach(filteredVOs, id: \.self) { vo in
                                     
                                     NavigationLink(destination:                                 VOsDetailsView(
                                             bin_id: building.bin_id,
