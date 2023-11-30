@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct BuildingDetailCardView: View {
     var building: Building
@@ -57,7 +58,13 @@ struct BuildingDetailCardView: View {
                         .groupBoxStyle(DefaultGroupBoxStyle())
                         
                         Button(action: {
-                            // To be added later
+                            let location = building.address
+                            let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                            if let url = URL(string: "http://maps.apple.com/?q=\(encodedLocation)") {
+                                if UIApplication.shared.canOpenURL(url) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
                         }) {
                             Label("View in Maps", systemImage: "map.fill")
                         }
@@ -152,6 +159,7 @@ struct BuildingDetailCardView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .task{
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
             viewModel.setBuilding(building.bin_id)
             buildingDetails = viewModel.buildingDetails
             firstAppear = false
