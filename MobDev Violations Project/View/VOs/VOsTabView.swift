@@ -53,7 +53,22 @@ struct VOsTabView: View {
                                 status: result.status,
                                 vo: result.vo)) 
                                 {
-                            Text("\(result.vo)")
+                                    HStack{
+                                        Text(result.vo)
+                                            .font(.subheadline)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .padding()
+                                        
+                                        Spacer()
+                                        
+                                        Circle()
+                                            .foregroundColor(result.status ? .green : .purple)
+                                            .frame(width: 20)
+                                            .padding()
+                                    }
+                                    .background(.bar)
+                                    .foregroundColor(.black)
+                                    .cornerRadius(6.0)
                         }
                     }
                 }
