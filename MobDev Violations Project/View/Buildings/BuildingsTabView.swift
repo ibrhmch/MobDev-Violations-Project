@@ -30,13 +30,13 @@ struct BuildingsTabView: View {
         NavigationView {
             VStack {
                 HStack {
-                    TextField("Search buildings", text: $searchText)
+                    TextField("Filter Buildings", text: $searchText)
                         .onChange(of: searchText) {
                             recentSearches.append(searchText)
                             print(recentSearches)
                         }
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+                        .padding(.horizontal)
 
                     if !searchText.isEmpty {
                         Button("Cancel") {
@@ -66,6 +66,7 @@ struct BuildingsTabView: View {
                     }
                 }
             }
+            .navigationBarTitle("Viewing Buildings", displayMode: .inline)
             .task{
                 await buildingsVM.setAllBuildings()
             }
