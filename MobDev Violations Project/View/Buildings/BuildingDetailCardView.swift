@@ -31,6 +31,22 @@ struct BuildingDetailCardView: View {
         }
     }
     
+    var filteredNOVs: [NoticeOfViolations] {
+        if (selectedFilterOption == 1) {
+            return viewModel.buildingDetails.listOfNotices ?? []
+        } else if (selectedFilterOption == 2) {
+            return viewModel.buildingDetails.listOfNotices?.filter { nov in
+                nov.status == false
+            } ?? []
+        } else if (selectedFilterOption == 0) {
+            return viewModel.buildingDetails.listOfNotices?.filter { nov in
+                nov.status == true
+            } ?? []
+        } else {
+            return []
+        }
+    }
+    
     init(_ bin_id: String, _ address: String){
         self.building = Building(bin_id: bin_id, address: address)
     }
@@ -157,9 +173,9 @@ struct BuildingDetailCardView: View {
                         }
                         .groupBoxStyle(DefaultGroupBoxStyle())
                         
-                        GroupBox(label: Label("\(viewModel.buildingDetails.listOfNotices!.count) Notices Found", systemImage: "signpost.right")) {
+                        GroupBox(label: Label("\(filteredNOVs.count) Notices Found", systemImage: "signpost.right")) {
                             VStack(alignment: .leading) {
-                                ForEach(viewModel.buildingDetails.listOfNotices!, id: \.self) { nov in
+                                ForEach(filteredNOVs, id: \.self) { nov in
                                     
                                     NavigationLink(destination:                                 NOVsDetailView(
                                             bin_id: building.bin_id,
