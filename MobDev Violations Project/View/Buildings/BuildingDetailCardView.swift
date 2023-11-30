@@ -60,7 +60,7 @@ struct BuildingDetailCardView: View {
                         //Open in Maps Button
                         // ------------------
                         Button(action: {
-                            let location = building.address
+                            let location = "\(building.address) NYC"
                             let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                             if let url = URL(string: "http://maps.apple.com/?q=\(encodedLocation)") {
                                 if UIApplication.shared.canOpenURL(url) {
@@ -85,6 +85,8 @@ struct BuildingDetailCardView: View {
                         .buttonStyle(FilledButtonStyle())
                         // ------------------
                         
+                        
+                        //Number of active Vos and Novs
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
                                 Text("# of Active VOs:")
@@ -99,6 +101,7 @@ struct BuildingDetailCardView: View {
                             }
                         }
                         .padding()
+                        // -------------------
                         
                         Spacer()
                         
@@ -110,18 +113,23 @@ struct BuildingDetailCardView: View {
                                             bin_id: building.bin_id,
                                             date: vo.date ?? "",
                                             status: vo.status,
-                                            vo: vo.vo))
-                                            {
-                                        Label(vo.vo.prefix(23), systemImage: "hand.tap")
-                                            .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(.black)
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                            .padding(.horizontal, 10)
-                                            .padding(.vertical, 10)
-                                            .background(Color(red: 151/255, green: 171/255, blue: 179/255))
-                                            .cornerRadius(7)
-                                            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
-                                    }
+                                            vo: vo.vo)){
+                                                HStack{
+                                                    Text(vo.vo.prefix(23))
+                                                        .font(.subheadline)
+                                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                                        .padding()
+                                                    
+                                                    Spacer()
+                                                    
+                                                    Label("", systemImage: "hand.tap")
+                                                }
+                                                .background(.bar)
+                                                .foregroundColor(.black)
+                                                .cornerRadius(6.0)
+                                                
+                                            }
+                                    
                                     Divider()
                                         .padding(.vertical, 5)
                                 }
@@ -140,15 +148,19 @@ struct BuildingDetailCardView: View {
                                             status: nov.status,
                                             nov: nov.nov))
                                     {
-                                        Label(nov.nov.prefix(23), systemImage: "hand.tap")
-                                            .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(.black)
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                            .padding(.horizontal, 10)
-                                            .padding(.vertical, 10)
-                                            .background(Color(red: 151/255, green: 171/255, blue: 179/255))
-                                            .cornerRadius(7)
-                                            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+                                        HStack{
+                                            Text(nov.nov.prefix(23))
+                                                .font(.subheadline)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .padding()
+                                            
+                                            Spacer()
+                                            
+                                            Label("", systemImage: "hand.tap")
+                                        }
+                                        .background(.bar)
+                                        .foregroundColor(.black)
+                                        .cornerRadius(6.0)
                                     }
                                     Divider()
                                         .padding(.vertical, 5)
