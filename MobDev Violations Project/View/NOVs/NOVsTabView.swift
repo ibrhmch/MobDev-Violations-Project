@@ -58,7 +58,6 @@ struct NOVsTabView: View {
                     }
                 }
             }
-            .navigationBarTitle("Notice of Violations")
         }
     }
 
