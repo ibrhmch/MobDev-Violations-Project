@@ -81,7 +81,6 @@ struct VOsDetailsView: View {
                     Spacer()
                 }
                 .navigationBarTitle("Viewing Violation Order", displayMode: .inline)
-                .padding()
             }
         }
 }
