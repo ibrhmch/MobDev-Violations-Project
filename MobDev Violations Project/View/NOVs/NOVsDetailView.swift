@@ -81,7 +81,6 @@ struct NOVsDetailView: View {
                     Spacer()
                 }
                 .navigationBarTitle("Viewing Notice of Violation", displayMode: .inline)
-                .padding()
             }
         }
 }
