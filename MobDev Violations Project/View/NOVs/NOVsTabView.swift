@@ -53,7 +53,22 @@ struct NOVsTabView: View {
                                 status: result.status,
                                 nov: result.nov))
                                 {
-                            Text("\(result.nov)")
+                                    HStack{
+                                        Text(result.nov)
+                                            .font(.subheadline)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .padding()
+                                        
+                                        Spacer()
+                                        
+                                        Circle()
+                                            .foregroundColor(result.status ? .green : .purple)
+                                            .frame(width: 20)
+                                            .padding()
+                                    }
+                                    .background(.bar)
+                                    .foregroundColor(.black)
+                                    .cornerRadius(6.0)
                         }
                     }
                 }
