@@ -57,6 +57,8 @@ struct BuildingDetailCardView: View {
                         }
                         .groupBoxStyle(DefaultGroupBoxStyle())
                         
+                        //Open in Maps Button
+                        // ------------------
                         Button(action: {
                             let location = building.address
                             let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
@@ -72,12 +74,16 @@ struct BuildingDetailCardView: View {
                         .padding()
                         .background(Color(red: 0.9, green: 0.9, blue: 0.9))
                         .cornerRadius(8)
+                        
+                        //Enable Notifications Button
+                        // ------------------
                         Button(action: {
                             // Subscribe action
                         }) {
                             Text("Enable Notifications")
                         }
                         .buttonStyle(FilledButtonStyle())
+                        // ------------------
                         
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
