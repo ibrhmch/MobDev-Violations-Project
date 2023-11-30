@@ -66,7 +66,6 @@ struct BuildingsTabView: View {
                     }
                 }
             }
-            .navigationBarTitle("Buildings")
             .task{
                 await buildingsVM.setAllBuildings()
             }
