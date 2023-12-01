@@ -11,7 +11,7 @@ import SwiftUI
 struct MobDev_Violations_ProjectApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreenView()
         }
     }
 }
