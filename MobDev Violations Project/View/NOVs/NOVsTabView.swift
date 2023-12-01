@@ -75,6 +75,7 @@ struct NOVsTabView: View {
                     if searchText == "" {
                         Text("Search for a Notice of Violation")
                             .font(.subheadline)
+                            .padding()
                     } else {
                         Text("Zero Notice of Violations Found")
                             .font(.headline)

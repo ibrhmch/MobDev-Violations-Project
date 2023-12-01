@@ -75,6 +75,7 @@ struct VOsTabView: View {
                     if searchText == "" {
                         Text("Search for a Violation")
                             .font(.subheadline)
+                            .padding()
                     } else {
                         Text("Zero Violations Found")
                             .font(.headline)
