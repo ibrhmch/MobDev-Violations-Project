@@ -60,90 +60,96 @@ struct BuildingDetailCardView: View {
             }
             else
             {
-                ScrollView{
-                    VStack(alignment: .center, spacing: 20) {
+                VStack{
+                    GroupBox() {
+                        // Alerts HStack
+                        HStack{
+                            Label("Alerts \(!alertsEnabled ? "Disabled" : "Enabled")", systemImage: "bell.fill")
+                                .font(.subheadline)
+                            
+                            Spacer()
+                            
+                            //Enable Notifications Button
+                            Button(action: {
+                                alertsEnabled = !alertsEnabled
+                            }) {
+                                Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding(7)
+                                    .background(!alertsEnabled ? Color.purple : Color.green)
+                                    .clipShape(Circle())
+                                    .foregroundColor(.white)
+                            }
+                        }
                         
-                        GroupBox() {
-                            // Alerts HStack
-                            HStack{
-                                Label("Alerts \(!alertsEnabled ? "Disabled" : "Enabled")", systemImage: "bell.fill")
-                                    .font(.subheadline)
+                        //Get Directions HStack
+                        HStack{
+                            Label("\(building.address)", systemImage: "mappin.and.ellipse")
+                                .font(.subheadline)
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                let location = "\(building.address) NYC"
+                                let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                if let url = URL(string: "http://maps.apple.com/?q=\(encodedLocation)") {
+                                    if UIApplication.shared.canOpenURL(url) {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }
+                            }) {
                                 
-                                Spacer()
-                                
-                                //Enable Notifications Button
-                                Button(action: {
-                                    alertsEnabled = !alertsEnabled
-                                }) {
-                                    Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
+                                HStack{
+                                    Image(systemName: "arrow.triangle.turn.up.right.circle")
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .padding(7)
-                                        .background(!alertsEnabled ? Color.purple : Color.green)
+                                        .background(.blue)
                                         .clipShape(Circle())
                                         .foregroundColor(.white)
                                 }
                             }
-                            
-                            //Get Directions HStack
-                            HStack{
-                                Label("\(building.address)", systemImage: "mappin.and.ellipse")
-                                    .font(.subheadline)
-                                
-                                Spacer()
-                                
-                                Button(action: {
-                                    let location = "\(building.address) NYC"
-                                    let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                    if let url = URL(string: "http://maps.apple.com/?q=\(encodedLocation)") {
-                                        if UIApplication.shared.canOpenURL(url) {
-                                            UIApplication.shared.open(url)
-                                        }
-                                    }
-                                }) {
-                                    
-                                    HStack{
-                                        Image(systemName: "arrow.triangle.turn.up.right.circle")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                            .padding(7)
-                                            .background(.blue)
-                                            .clipShape(Circle())
-                                            .foregroundColor(.white)
-                                    }
-                                }
-                            }
-                            
-                            // Building Information
-                            VStack() {
-                                Divider()
-                                
-                                HStack {
-                                    Text("BIN: ")
-                                    Spacer()
-                                    Text("\(building.bin_id)")
-                                }
-                                HStack {
-                                    Text("Block: ")
-                                    Spacer()
-                                    Text("static")
-                                }
-                                HStack {
-                                    Text("Active VOs:")
-                                    Spacer()
-                                    Text("\(viewModel.buildingDetails.violations.activeviolations)")
-                                }
-                                HStack {
-                                    Text("Active NOVs:")
-                                    Spacer()
-                                    Text("\(viewModel.buildingDetails.notices.activenotices)")
-                                }
-                            }
-                            .font(.subheadline)
                         }
-                        .groupBoxStyle(DefaultGroupBoxStyle())
                         
-                        FilterBar(selectedFilterOption: $selectedFilterOption)
+                        // Building Information
+                        VStack() {
+                            Divider()
+                            
+                            HStack {
+                                Text("BIN: ")
+                                Spacer()
+                                Text("\(building.bin_id)")
+                            }
+                            HStack {
+                                Text("Block: ")
+                                Spacer()
+                                Text("static")
+                            }
+                            HStack {
+                                Text("Active VOs:")
+                                Spacer()
+                                Text("\(viewModel.buildingDetails.violations.activeviolations)")
+                            }
+                            HStack {
+                                Text("Active NOVs:")
+                                Spacer()
+                                Text("\(viewModel.buildingDetails.notices.activenotices)")
+                            }
+                        }
+                        .font(.subheadline)
+                    }
+                    .groupBoxStyle(DefaultGroupBoxStyle())
+                    
+                    FilterBar(selectedFilterOption: $selectedFilterOption)
+                    
+                    Divider()
+                }
+                .padding(.horizontal)
+
+                
+                ScrollView{
+                    VStack(alignment: .center, spacing: 20) {
                         
                         GroupBox(label: Label("\(filteredVOs.count) Violations Found", systemImage: "signpost.left")) {
                             VStack(alignment: .leading) {
