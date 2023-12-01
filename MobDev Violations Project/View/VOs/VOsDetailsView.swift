@@ -28,14 +28,13 @@ struct VOsDetailsView: View {
                     .cornerRadius(10)
                     .padding()
 
-                    GroupBox (label: Label("Violation Order Details", systemImage: "signpost.left")) {
+                    GroupBox () {
+                        HStack{
+                            Label("\(vo)", systemImage: "signpost.left")
+                                .font(.headline)
+                        }
                         Divider()
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Text("\(vo)")
-                                    .bold()
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                            }
+                        VStack(alignment: .leading, spacing: 5) {
                             HStack {
                                 Text("Issued On:")
                                 Spacer()
@@ -51,8 +50,14 @@ struct VOsDetailsView: View {
                                 Spacer()
                                 Text("\(status ? "Active" : "Dismissed")")
                             }
+                            Rectangle()
+                                .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                                .foregroundColor(status ? .green : .purple)
+                                .frame(height: 7)
+                                .padding(.top)
                         }
                         .padding()
+                        .font(.subheadline)
                     }
                     .padding()
                     
