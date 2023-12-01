@@ -60,41 +60,65 @@ struct BuildingDetailCardView: View {
             }
             else
             {
-                Text("\(building.bin_id)")
-                    .font(.subheadline)
-                
                 ScrollView{
                     VStack(alignment: .center, spacing: 20) {
                         
                         GroupBox() {
+                            // Alerts HStack
                             HStack{
-                                Label("Building Information", systemImage: "building.2")
+                                Label("Alerts \(!alertsEnabled ? "Disabled" : "Enabled")", systemImage: "bell.fill")
                                     .font(.subheadline)
+                                
                                 Spacer()
+                                
                                 //Enable Notifications Button
-                                // ------------------
                                 Button(action: {
                                     alertsEnabled = !alertsEnabled
                                 }) {
                                     Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
                                         .resizable()
-                                        .frame(width: 20, height: 20) // Set a specific frame size
+                                        .frame(width: 20, height: 20)
                                         .padding(7)
-                                        .background(!alertsEnabled ? Color.purple : Color.green) // Background color for the circular area
-                                        .clipShape(Circle()) // Clip the view to a circular shape
-                                        .foregroundColor(.white) // Set the color of the bell icon
+                                        .background(!alertsEnabled ? Color.purple : Color.green)
+                                        .clipShape(Circle())
+                                        .foregroundColor(.white)
                                 }
-                                // ------------------
                             }
-
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("\(building.address)")
-                                        .bold()
-                                        .frame(maxWidth: .infinity, alignment: .center)
-                                }
+                            
+                            //Get Directions HStack
+                            HStack{
+                                Label("\(building.address)", systemImage: "mappin.and.ellipse")
+                                    .font(.subheadline)
+                                
                                 Spacer()
+                                
+                                Button(action: {
+                                    let location = "\(building.address) NYC"
+                                    let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                    if let url = URL(string: "http://maps.apple.com/?q=\(encodedLocation)") {
+                                        if UIApplication.shared.canOpenURL(url) {
+                                            UIApplication.shared.open(url)
+                                        }
+                                    }
+                                }) {
+                                    
+                                    HStack{
+                                        Image(systemName: "arrow.triangle.turn.up.right.circle")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                            .padding(7)
+                                            .background(.blue)
+                                            .clipShape(Circle())
+                                            .foregroundColor(.white)
+                                    }
+                                }
+                            }
+                            
+
+                            // Building Information
+                            VStack() {
                                 Divider()
+                                
                                 HStack {
                                     Text("BIN: ")
                                     Spacer()
@@ -106,27 +130,10 @@ struct BuildingDetailCardView: View {
                                     Text("static")
                                 }
                             }
-                            .padding()
+                            .font(.subheadline)
                         }
                         .groupBoxStyle(DefaultGroupBoxStyle())
                         
-                        //Open in Maps Button
-                        // ------------------
-                        Button(action: {
-                            let location = "\(building.address) NYC"
-                            let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                            if let url = URL(string: "http://maps.apple.com/?q=\(encodedLocation)") {
-                                if UIApplication.shared.canOpenURL(url) {
-                                    UIApplication.shared.open(url)
-                                }
-                            }
-                        }) {
-                            Label("View in Maps", systemImage: "map.fill")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .padding()
-                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
-                        .cornerRadius(8)
                         
                         
                         //Number of active Vos and Novs
