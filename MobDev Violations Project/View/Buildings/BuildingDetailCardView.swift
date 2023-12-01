@@ -114,7 +114,6 @@ struct BuildingDetailCardView: View {
                                 }
                             }
                             
-
                             // Building Information
                             VStack() {
                                 Divider()
@@ -129,31 +128,20 @@ struct BuildingDetailCardView: View {
                                     Spacer()
                                     Text("static")
                                 }
+                                HStack {
+                                    Text("VOs:")
+                                    Spacer()
+                                    Text("\(viewModel.buildingDetails.violations.activeviolations)")
+                                }
+                                HStack {
+                                    Text("NOVs:")
+                                    Spacer()
+                                    Text("\(viewModel.buildingDetails.notices.activenotices)")
+                                }
                             }
                             .font(.subheadline)
                         }
                         .groupBoxStyle(DefaultGroupBoxStyle())
-                        
-                        
-                        
-                        //Number of active Vos and Novs
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Text("# of Active VOs:")
-                                Spacer()
-                                Text("\(viewModel.buildingDetails.violations.activeviolations)")
-                            }
-                            
-                            HStack {
-                                Text("# of Active NOVs:")
-                                Spacer()
-                                Text("\(viewModel.buildingDetails.notices.activenotices)")
-                            }
-                        }
-                        .padding()
-                        // -------------------
-                        
-                        Spacer()
                         
                         FilterBar(selectedFilterOption: $selectedFilterOption)
                         
