@@ -71,6 +71,15 @@ struct NOVsTabView: View {
                                     .cornerRadius(6.0)
                         }
                     }
+                } else {
+                    if searchText == "" {
+                        Text("Search for a Notice of Violation")
+                            .font(.subheadline)
+                    } else {
+                        Text("Zero Notice of Violations Found")
+                            .font(.headline)
+                        Spacer()
+                    }
                 }
             }
             .navigationBarTitle("Search Notice of Violations", displayMode: .inline)
