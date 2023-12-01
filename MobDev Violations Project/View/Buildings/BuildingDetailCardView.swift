@@ -13,7 +13,7 @@ struct BuildingDetailCardView: View {
     @ObservedObject var viewModel = BuildingDetailsViewModel()
     @State var buildingDetails = BuildingDetailsResponse()
     @State var firstAppear: Bool = true
-    @State var selectedFilterOption: Int = 1
+    @State var selectedFilterOption: Int = 0
     @State var alertsEnabled = false
     
     var filteredVOs: [ViolationOrder] {
