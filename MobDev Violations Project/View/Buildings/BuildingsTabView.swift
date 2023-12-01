@@ -57,6 +57,7 @@ struct BuildingsTabView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("\(result.address)")
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.subheadline)
                             }
                         }
                         .padding()
