@@ -71,6 +71,15 @@ struct VOsTabView: View {
                                     .cornerRadius(6.0)
                         }
                     }
+                }  else {
+                    if searchText == "" {
+                        Text("Search for a Violation")
+                            .font(.subheadline)
+                    } else {
+                        Text("Zero Violations Found")
+                            .font(.headline)
+                        Spacer()
+                    }
                 }
             }
             .navigationBarTitle("Search Violation Orders", displayMode: .inline)
