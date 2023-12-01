@@ -14,6 +14,7 @@ struct BuildingDetailCardView: View {
     @State var buildingDetails = BuildingDetailsResponse()
     @State var firstAppear: Bool = true
     @State var selectedFilterOption: Int = 1
+    @State var alertsEnabled = false
     
     var filteredVOs: [ViolationOrder] {
         if (selectedFilterOption == 1) {
@@ -65,7 +66,27 @@ struct BuildingDetailCardView: View {
                 ScrollView{
                     VStack(alignment: .center, spacing: 20) {
                         
-                        GroupBox(label: Label("Building Information", systemImage: "building.columns")) {
+                        GroupBox() {
+                            HStack{
+                                Label("Building Information", systemImage: "building.2")
+                                    .font(.subheadline)
+                                Spacer()
+                                //Enable Notifications Button
+                                // ------------------
+                                Button(action: {
+                                    alertsEnabled = !alertsEnabled
+                                }) {
+                                    Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
+                                        .resizable()
+                                        .frame(width: 20, height: 20) // Set a specific frame size
+                                        .padding(7)
+                                        .background(!alertsEnabled ? Color.purple : Color.green) // Background color for the circular area
+                                        .clipShape(Circle()) // Clip the view to a circular shape
+                                        .foregroundColor(.white) // Set the color of the bell icon
+                                }
+                                // ------------------
+                            }
+
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text("\(building.address)")
@@ -106,16 +127,6 @@ struct BuildingDetailCardView: View {
                         .padding()
                         .background(Color(red: 0.9, green: 0.9, blue: 0.9))
                         .cornerRadius(8)
-                        
-                        //Enable Notifications Button
-                        // ------------------
-                        Button(action: {
-                            // Subscribe action
-                        }) {
-                            Text("Enable Notifications")
-                        }
-                        .buttonStyle(FilledButtonStyle())
-                        // ------------------
                         
                         
                         //Number of active Vos and Novs
