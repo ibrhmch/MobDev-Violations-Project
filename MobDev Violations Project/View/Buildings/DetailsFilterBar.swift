@@ -12,6 +12,7 @@ struct FilterBar: View {
     private let buttonWidth: CGFloat = 100
     private let textHeight: CGFloat = 45
     private let buttonHeight: CGFloat = 40
+    var defaultColor: Color = Color(red: 127/255, green: 151/255, blue: 204/255)
     
     var body: some View {
         HStack {
@@ -21,7 +22,7 @@ struct FilterBar: View {
                 // Highlighted Rectangle
                 Rectangle()
                     .frame(width: buttonWidth, height: buttonHeight)
-                    .foregroundColor(Color(red: 127/255, green: 151/255, blue: 204/255))
+                    .foregroundColor(selectedFilterOption == 1 ? defaultColor : (selectedFilterOption == 0) ? .green : .purple)
                     .cornerRadius(15)
                     .offset(x: CGFloat(selectedFilterOption) * buttonWidth - buttonWidth)
                     .transition(.slide)
@@ -64,14 +65,14 @@ struct FilterBar: View {
                     }
                 }
             }
-            .background(Color(red: 216/255, green: 225/255, blue: 235/255))
+            .background(.bar)
             .cornerRadius(15)
             .overlay(
                 RoundedRectangle(cornerRadius: 15)
-                    .stroke(Color.black.opacity(0.2), lineWidth: 1)
+                    .stroke(Color.black.opacity(0.2), lineWidth: 0)
             )
             .frame(width: buttonWidth * 3)
-            .padding()
+            .font(.subheadline)
     
             Spacer()
         }
