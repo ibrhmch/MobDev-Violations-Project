@@ -129,12 +129,12 @@ struct BuildingDetailCardView: View {
                                     Text("static")
                                 }
                                 HStack {
-                                    Text("VOs:")
+                                    Text("Active VOs:")
                                     Spacer()
                                     Text("\(viewModel.buildingDetails.violations.activeviolations)")
                                 }
                                 HStack {
-                                    Text("NOVs:")
+                                    Text("Active NOVs:")
                                     Spacer()
                                     Text("\(viewModel.buildingDetails.notices.activenotices)")
                                 }
