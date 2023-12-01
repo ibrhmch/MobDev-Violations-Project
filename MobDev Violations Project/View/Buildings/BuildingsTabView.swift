@@ -49,21 +49,27 @@ struct BuildingsTabView: View {
                 Spacer()
                 
                 if (buildingsVM.buildingsFetched){
-                    List(searchResults, id: \.self) { result in
-                        NavigationLink(destination: BuildingDetailCardView(result.bin_id, result.address)) {
-                            VStack{
-                                Text("\(result.bin_id)")
-                                    .font(.headline)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("\(result.address)")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .font(.subheadline)
+                    if searchResults.count > 0 {
+                        List(searchResults, id: \.self) { result in
+                            NavigationLink(destination: BuildingDetailCardView(result.bin_id, result.address)) {
+                                VStack{
+                                    Text("\(result.bin_id)")
+                                        .font(.headline)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    Text("\(result.address)")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .font(.subheadline)
+                                }
                             }
+                            .padding()
+                            .background(.bar)
+                            .foregroundColor(.black)
+                            .cornerRadius(10)
                         }
-                        .padding()
-                        .background(.bar)
-                        .foregroundColor(.black)
-                        .cornerRadius(10)
+                    } else {
+                        Text("Zero Buildings Found")
+                            .font(.headline)
+                        Spacer()
                     }
                 }
             }
