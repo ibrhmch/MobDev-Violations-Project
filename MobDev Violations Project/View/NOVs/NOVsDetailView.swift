@@ -28,14 +28,13 @@ struct NOVsDetailView: View {
                     .cornerRadius(10)
                     .padding()
 
-                    GroupBox (label: Label("NOV Details", systemImage: "signpost.right")) {
+                    GroupBox () {
+                        HStack{
+                            Label("\(nov)", systemImage: "signpost.right")
+                                .font(.headline)
+                        }
                         Divider()
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Text("\(nov)")
-                                    .bold()
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                            }
+                        VStack(alignment: .leading, spacing: 5) {
                             HStack {
                                 Text("Issued On:")
                                 Spacer()
@@ -51,8 +50,14 @@ struct NOVsDetailView: View {
                                 Spacer()
                                 Text("\(status ? "Active" : "Dismissed")")
                             }
+                            Rectangle()
+                                .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                                .foregroundColor(status ? .green : .purple)
+                                .frame(height: 7)
+                                .padding(.top)
                         }
                         .padding()
+                        .font(.subheadline)
                     }
                     .padding()
                     
