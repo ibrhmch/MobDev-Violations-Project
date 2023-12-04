@@ -25,23 +25,32 @@ struct NOVsTabView: View {
         NavigationView {
             VStack {
                 HStack {
-                    TextField("Filter Notice of Violations", text: $searchText)
-                        .onChange(of: searchText) {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Filter Notice of Violations", text: $searchText)                        .onChange(of: searchText) {
                             recentSearches.append(searchText)
                             Task{
                                 await novsVM.getSimilarNOVs(searchText)
                             }
                         }
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal)
+                    }
+                    .underlineTextField()
 
                     if !searchText.isEmpty {
                         Button("Cancel") {
                             searchText = ""
                         }
-                        .padding(.trailing, 10)
+                        .foregroundColor(.black)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 7)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(7)
+                        
+                        Spacer()
                     }
                 }
+                .padding()
+                .background(.white)
                 
                 Spacer()
                 
@@ -53,33 +62,14 @@ struct NOVsTabView: View {
                                 status: result.status,
                                 nov: result.nov))
                                 {
-                                    HStack{
-                                        Text(result.nov)
-                                            .font(.subheadline)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                            .padding()
-                                        
-                                        Spacer()
-                                        
-                                        Circle()
-                                            .foregroundColor(result.status ? .green : .purple)
-                                            .frame(width: 10)
-                                            .padding()
-                                    }
-                                    .background(.bar)
-                                    .foregroundColor(.black)
-                                    .cornerRadius(6.0)
+                                    VOsNOVsListCardView(id: result.nov, status: result.status)
                         }
                     }
                 } else {
                     if searchText == "" {
-                        Text("Search for a Notice of Violation")
-                            .font(.subheadline)
-                            .padding()
+                        SearchForThisView(message: "Please search for a notice of violation")
                     } else {
-                        Text("Zero Notice of Violations Found")
-                            .font(.headline)
-                        Spacer()
+                        ZeroResultsFoundView(message: "Please search for a different notice of violation")
                     }
                 }
             }

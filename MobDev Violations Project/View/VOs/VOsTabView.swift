@@ -27,10 +27,11 @@ struct VOsTabView: View {
                 HStack {
                     HStack {
                         Image(systemName: "magnifyingglass")
-                        TextField("Search", text: $searchText)                        .onChange(of: searchText) {
-                            recentSearches.append(searchText)
-                            Task{
-                                await violationsVM.getSimilarViolations(searchText)
+                        TextField("Filter Violation Orders", text: $searchText)                        
+                            .onChange(of: searchText) {
+                                recentSearches.append(searchText)
+                                Task{
+                                    await violationsVM.getSimilarViolations(searchText)
                             }
                         }
                     }.underlineTextField()
@@ -61,22 +62,7 @@ struct VOsTabView: View {
                                 status: result.status,
                                 vo: result.vo)) 
                                 {
-                                    HStack{
-                                        Text(result.vo)
-                                            .font(.subheadline)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                            .padding()
-                                        
-                                        Spacer()
-                                        
-                                        Circle()
-                                            .foregroundColor(result.status ? .green : .purple)
-                                            .frame(width: 10)
-                                            .padding()
-                                    }
-                                    .background(.bar)
-                                    .foregroundColor(.black)
-                                    .cornerRadius(6.0)
+                                    VOsNOVsListCardView(id: result.vo, status: result.status)
                         }
                     }
                 }  else {
