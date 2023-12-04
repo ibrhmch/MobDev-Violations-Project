@@ -25,23 +25,31 @@ struct VOsTabView: View {
         NavigationView {
             VStack {
                 HStack {
-                    TextField("Filter Violations", text: $searchText)
-                        .onChange(of: searchText) {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search", text: $searchText)                        .onChange(of: searchText) {
                             recentSearches.append(searchText)
                             Task{
                                 await violationsVM.getSimilarViolations(searchText)
                             }
                         }
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal)
+                    }.underlineTextField()
 
                     if !searchText.isEmpty {
                         Button("Cancel") {
                             searchText = ""
                         }
-                        .padding(.trailing, 10)
+                        .foregroundColor(.black)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 7)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(7)
+                        
+                        Spacer()
                     }
                 }
+                .padding()
+                .background(.white)
                 
                 Spacer()
                 
@@ -73,13 +81,9 @@ struct VOsTabView: View {
                     }
                 }  else {
                     if searchText == "" {
-                        Text("Search for a Violation")
-                            .font(.subheadline)
-                            .padding()
+                        SearchForThisView(message: "Please search for a violation")
                     } else {
-                        Text("Zero Violations Found")
-                            .font(.headline)
-                        Spacer()
+                        ZeroResultsFoundView(message: "Please search for a different violation")
                     }
                 }
             }
