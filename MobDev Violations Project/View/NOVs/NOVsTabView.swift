@@ -56,7 +56,7 @@ struct NOVsTabView: View {
                 
                 if ((novsVM.listOfNovs) != nil){
                     List(searchResults, id: \.self) { result in
-                        NavigationLink(destination:                                 NOVsDetailView(
+                        NavigationLink(destination: NOVsDetailView(
                                 bin_id: result.bin,
                                 date: result.date ?? "",
                                 status: result.status,

@@ -56,7 +56,7 @@ struct VOsTabView: View {
                 
                 if ((violationsVM.listOfViolations) != nil){
                     List(searchResults, id: \.self) { result in
-                        NavigationLink(destination:                                 VOsDetailsView(
+                        NavigationLink(destination: VOsDetailsView(
                                 bin_id: result.bin,
                                 date: result.date ?? "",
                                 status: result.status,
