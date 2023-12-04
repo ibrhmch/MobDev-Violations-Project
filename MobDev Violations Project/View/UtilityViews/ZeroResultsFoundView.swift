@@ -22,6 +22,7 @@ struct ZeroResultsFoundView: View {
             Text(message)
                 .font(.subheadline)
         }
+        .foregroundColor(.gray)
         Spacer()
     }
 }

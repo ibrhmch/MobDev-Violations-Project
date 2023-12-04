@@ -20,6 +20,7 @@ struct SearchForThisView: View {
                 .padding()
                 .font(.subheadline)
         }
+        .foregroundColor(.gray)
         Spacer()
     }
 }
