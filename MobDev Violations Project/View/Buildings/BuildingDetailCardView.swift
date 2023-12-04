@@ -53,7 +53,7 @@ struct BuildingDetailCardView: View {
     var body: some View {
         VStack{
             if !viewModel.buildingDetailsAreSet {
-                    ProgressView()
+                    ProgressView("Loading Building Details")
                         .progressViewStyle(CircularProgressViewStyle())
             }
             else
@@ -221,6 +221,7 @@ struct BuildingDetailCardView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .task(priority: .userInitiated){
+            try? await Task.sleep(nanoseconds: 1_500_000_000)
             viewModel.setBuilding(building.bin_id)
         }
     }
