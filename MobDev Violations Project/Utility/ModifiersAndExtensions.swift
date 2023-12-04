@@ -14,7 +14,7 @@ extension View {
     func underlineTextField() -> some View {
         self
             .overlay(Rectangle().frame(height: 2).padding(.top, 35))
-            .foregroundColor(.black)
+            .foregroundColor(Color.primary)
             .padding(10)
     }
 }
