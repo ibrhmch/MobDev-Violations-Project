@@ -28,21 +28,26 @@ struct BuildingsTabView: View {
         NavigationView {
             VStack {
                 HStack {
-                    TextField("Filter Buildings", text: $searchText)
-                        .onChange(of: searchText) {
-                            recentSearches.append(searchText)
-                            print(recentSearches)
-                        }
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal)
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search", text: $searchText)
+                    }.underlineTextField()
 
                     if !searchText.isEmpty {
                         Button("Cancel") {
                             searchText = ""
                         }
-                        .padding(.trailing, 10)
+                        .foregroundColor(.black)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 7)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(7)
+                        
+                        Spacer()
                     }
                 }
+                .padding()
+                .background(.white)
                 
                 Spacer()
                 
@@ -65,9 +70,7 @@ struct BuildingsTabView: View {
                             .cornerRadius(10)
                         }
                     } else {
-                        Text("Zero Buildings Found")
-                            .font(.headline)
-                        Spacer()
+                        ZeroResultsFoundView(message: "Please search for a different building")
                     }
                 }
             }
