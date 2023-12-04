@@ -38,17 +38,17 @@ struct BuildingsTabView: View {
                         Button("Cancel") {
                             searchText = ""
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.primary)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 7)
-                        .background(.ultraThinMaterial)
+                        .background(.gray)
                         .cornerRadius(7)
                         
                         Spacer()
                     }
                 }
                 .padding()
-                .background(colorScheme == .dark ? .gray : .white)
+                .background(Color(UIColor.systemBackground))
                 
                 Spacer()
                 
@@ -66,8 +66,8 @@ struct BuildingsTabView: View {
                                 }
                             }
                             .padding()
-                            .background(colorScheme == .dark ? .gray : Color(red: 237/255, green: 237/255, blue: 237/255))
-                            .foregroundColor(.black)
+                            .background(colorScheme == .dark ? Color.black : Color(red: 240/255, green: 240/255, blue: 240/255))
+                            .foregroundColor(Color.primary)
                             .cornerRadius(10)
                         }
                     } else {
