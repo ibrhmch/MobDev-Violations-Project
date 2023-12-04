@@ -21,7 +21,7 @@ struct VOsNOVsListCardView: View {
             Spacer()
             
             Circle()
-                .foregroundColor(status ? .green : .purple)
+                .foregroundColor(status ? Color(red: 61/255, green: 173/255, blue: 166/255) : .purple)
                 .frame(width: 10)
                 .padding(.vertical)
         }

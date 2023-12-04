@@ -52,7 +52,7 @@ struct NOVsDetailView: View {
                             }
                             Rectangle()
                                 .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
-                                .foregroundColor(status ? .green : .purple)
+                                .foregroundColor(status ? Color(red: 61/255, green: 173/255, blue: 166/255) : .purple)
                                 .frame(height: 7)
                                 .padding(.top)
                         }
