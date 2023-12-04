@@ -10,9 +10,7 @@ import MapKit
 
 struct BuildingDetailCardView: View {
     var building: Building
-    @ObservedObject var viewModel = BuildingDetailsViewModel()
-    @State var buildingDetails = BuildingDetailsResponse()
-    @State var firstAppear: Bool = true
+    @StateObject var viewModel = BuildingDetailsViewModel()
     @State var selectedFilterOption: Int = 0
     @State var alertsEnabled = false
     
@@ -54,7 +52,7 @@ struct BuildingDetailCardView: View {
     
     var body: some View {
         VStack{
-            if firstAppear {
+            if !viewModel.buildingDetailsAreSet {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
             }
@@ -222,11 +220,8 @@ struct BuildingDetailCardView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .task{
+        .task(priority: .userInitiated){
             viewModel.setBuilding(building.bin_id)
-            buildingDetails = viewModel.buildingDetails
-            try? await Task.sleep(nanoseconds: 500_000_000)
-            firstAppear = false
         }
     }
 }
