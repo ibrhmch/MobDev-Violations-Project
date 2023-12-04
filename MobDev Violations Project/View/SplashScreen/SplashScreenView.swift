@@ -23,8 +23,11 @@ struct SplashScreenView: View {
             VStack{
                 VStack{
                     Image(systemName: "building.2.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 150)
                         .font(.system(size: 80))
-                        .foregroundColor(.purple)
+                        .foregroundColor(Color(red: 67/255, green: 129/255, blue: 166/255))
                         .padding()
                     
                     Text("New York Building Violations")
