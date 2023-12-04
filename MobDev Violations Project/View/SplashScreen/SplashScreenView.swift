@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SplashScreenView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var isActive = false
     @State private var size = 0.8
     @State private var opacity = 0.5
@@ -32,7 +33,7 @@ struct SplashScreenView: View {
                     
                     Text("New York Building Violations")
                         .font(Font.custom("Savoye LET", size: 35))
-                        .foregroundColor(.black.opacity(0.80))
+                        .foregroundColor(colorScheme == .dark ? Color(red: 237/255, green: 237/255, blue: 237/255) : .black.opacity(0.80))
                 }
                 .scaleEffect(size)
                 .opacity(opacity)

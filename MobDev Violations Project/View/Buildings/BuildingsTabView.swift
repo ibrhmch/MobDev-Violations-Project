@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BuildingsTabView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var searchText = ""
     @State private var recentSearches = [String]()
     @StateObject private var buildingsVM = BuildingsSearchViewModel()
@@ -47,7 +48,7 @@ struct BuildingsTabView: View {
                     }
                 }
                 .padding()
-                .background(.white)
+                .background(colorScheme == .dark ? .gray : .white)
                 
                 Spacer()
                 
@@ -65,7 +66,7 @@ struct BuildingsTabView: View {
                                 }
                             }
                             .padding()
-                            .background(.bar)
+                            .background(colorScheme == .dark ? .gray : Color(red: 237/255, green: 237/255, blue: 237/255))
                             .foregroundColor(.black)
                             .cornerRadius(10)
                         }
