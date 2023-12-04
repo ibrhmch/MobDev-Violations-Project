@@ -7,7 +7,7 @@
 
 import Foundation
 
-let apiEndPoint = "http://127.0.0.1:5000"
+let apiEndPoint = "https://1ae1-2601-280-5c82-c970-d805-9170-800f-a1f8.ngrok-free.app"
 
 func getDateFromString(_ dateString: String) -> String {
     let inputFormatter = DateFormatter()

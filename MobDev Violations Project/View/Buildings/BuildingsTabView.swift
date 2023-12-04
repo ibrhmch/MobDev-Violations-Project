@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct BuildingsTabView: View {
     @State private var searchText = ""
     @State private var recentSearches = [String]()
-    @ObservedObject private var buildingsVM = BuildingsSearchViewModel()
+    @StateObject private var buildingsVM = BuildingsSearchViewModel()
     
     
     var searchResults: [Building] {
