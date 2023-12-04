@@ -45,7 +45,7 @@
 		59829DF32AFD8C7900E18C97 /* VOsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOsDetailsView.swift; sourceTree = "<group>"; };
 		59863AE02B1936800095184D /* LIstFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LIstFilterBar.swift; sourceTree = "<group>"; };
 		59863AE32B19A8E70095184D /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		59D61F802AEB4C26000E25C2 /* MobDev Violations Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MobDev Violations Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59D61F802AEB4C26000E25C2 /* NY Violations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NY Violations.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D61F832AEB4C26000E25C2 /* MobDev_Violations_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobDev_Violations_ProjectApp.swift; sourceTree = "<group>"; };
 		59D61F852AEB4C26000E25C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		59D61F872AEB4C28000E25C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		59D61F812AEB4C26000E25C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59D61F802AEB4C26000E25C2 /* MobDev Violations Project.app */,
+				59D61F802AEB4C26000E25C2 /* NY Violations.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 			);
 			name = "MobDev Violations Project";
 			productName = "MobDev Violations Project";
-			productReference = 59D61F802AEB4C26000E25C2 /* MobDev Violations Project.app */;
+			productReference = 59D61F802AEB4C26000E25C2 /* NY Violations.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -467,7 +467,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "temp-xcode.MobDev-Violations-Project";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "NY Violations";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -495,7 +495,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "temp-xcode.MobDev-Violations-Project";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "NY Violations";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
