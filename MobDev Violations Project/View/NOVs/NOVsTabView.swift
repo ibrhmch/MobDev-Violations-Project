@@ -60,10 +60,13 @@ struct NOVsTabView: View {
                                 bin_id: result.bin,
                                 date: result.date ?? "",
                                 status: result.status,
-                                nov: result.nov))
-                                {
+                                nov: result.nov)){
                                     VOsNOVsListCardView(id: result.nov, status: result.status)
-                        }
+                                }
+                                .padding(.horizontal)
+                                .background(.bar)
+                                .foregroundColor(.black)
+                                .cornerRadius(6.0)
                     }
                 } else {
                     if searchText == "" {

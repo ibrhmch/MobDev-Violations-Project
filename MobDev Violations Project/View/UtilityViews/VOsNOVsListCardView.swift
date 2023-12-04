@@ -16,18 +16,15 @@ struct VOsNOVsListCardView: View {
             Text(id)
                 .font(.subheadline)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+                .padding(.vertical)
             
             Spacer()
             
             Circle()
                 .foregroundColor(status ? .green : .purple)
                 .frame(width: 10)
-                .padding()
+                .padding(.vertical)
         }
-        .background(.bar)
-        .foregroundColor(.black)
-        .cornerRadius(6.0)
     }
 }
 
