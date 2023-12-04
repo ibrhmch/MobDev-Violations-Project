@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct ZeroResultsFoundView: View {
+    var message: String = "Please search for something else"
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Image(systemName: "rectangle.and.text.magnifyingglass")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+
+            Text("0 results")
+                .font(.headline)
+                .padding()
+            Text(message)
+                .font(.subheadline)
+        }
+        Spacer()
     }
 }
 
 #Preview {
-    ZeroResultsFoundView()
+    ZeroResultsFoundView(message: "Please search for a different building")
 }
