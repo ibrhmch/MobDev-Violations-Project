@@ -155,7 +155,7 @@ struct BuildingDetailCardView: View {
                                     
                                     NavigationLink(destination:                                 VOsDetailsView(
                                             bin_id: building.bin_id,
-                                            date: vo.date ?? "",
+                                            date: vo.date ?? "Date Not Found",
                                             status: vo.status,
                                             vo: vo.vo)){
                                                 HStack{
@@ -188,7 +188,7 @@ struct BuildingDetailCardView: View {
                                     
                                     NavigationLink(destination:                                 NOVsDetailView(
                                             bin_id: building.bin_id,
-                                            date: nov.date ?? "",
+                                            date: nov.date ?? "Date Not Found",
                                             status: nov.status,
                                             nov: nov.nov))
                                     {
