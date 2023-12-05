@@ -62,7 +62,7 @@ struct SettingsTabView: View {
                     .transition(.move(edge: .trailing))
                     .onTapGesture {
                         withAnimation(
-                            .easeInOut(duration: 0.3)) {
+                            .easeOut(duration: 0.2)) {
                                 isExpanded.toggle()
                             }
                     }
