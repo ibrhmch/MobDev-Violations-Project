@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct VOsDetailsView: View {
+    @Environment(\.colorScheme) var colorScheme
     var bin_id: String
     var date: String
     var status: Bool
@@ -77,8 +78,8 @@ struct VOsDetailsView: View {
                         .frame(maxWidth: .infinity)
                         .buttonStyle(PlainButtonStyle())
                         .padding()
-                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
-                        .foregroundColor(.black)
+                        .background(colorScheme == .dark ? Color(red: 30/255, green: 30/255, blue: 30/255) : Color(red: 240/255, green: 240/255, blue: 240/255))
+                        .foregroundColor(Color.primary)
                         .cornerRadius(8)
                     }
                     .padding()
