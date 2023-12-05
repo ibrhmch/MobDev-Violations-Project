@@ -36,6 +36,39 @@ struct SettingsTabView: View {
                 }
                 .padding(.horizontal)
                 
+                HStack{
+                    VStack {
+                        HStack{
+                            Text("Subscribed Buildings")
+                            Spacer()
+                            Image(systemName: !isExpanded ? "rectangle.expand.vertical" : "rectangle.compress.vertical")
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 4)
+                                .background(.gray)
+                                .cornerRadius(5)
+                        }
+                        if isExpanded {
+                            ScrollView{
+                                Text("More Info")
+                                Text("And more")
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, barVerticalPadding)
+                    .frame(maxWidth: .infinity)
+                    .background(.fill)
+                    .cornerRadius(5)
+                    .transition(.move(edge: .trailing))
+                    .onTapGesture {
+                        withAnimation(
+                            .easeInOut(duration: 0.3)) {
+                                isExpanded.toggle()
+                            }
+                    }
+                }
+                .padding(.horizontal)
+                
                 Spacer()
                 
             }
