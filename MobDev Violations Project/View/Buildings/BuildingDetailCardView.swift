@@ -9,10 +9,11 @@ import SwiftUI
 import MapKit
 
 struct BuildingDetailCardView: View {
-    var building: Building
+    @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = BuildingDetailsViewModel()
     @State var selectedFilterOption: Int = 0
     @State var alertsEnabled = false
+    var building: Building
     
     var filteredVOs: [ViolationOrder] {
         if (selectedFilterOption == 1) {
@@ -168,8 +169,8 @@ struct BuildingDetailCardView: View {
                                                     
                                                     Label("", systemImage: "hand.tap")
                                                 }
-                                                .background(.bar)
-                                                .foregroundColor(.black)
+                                                .background(Color(UIColor.systemBackground))
+                                                .foregroundColor(Color.primary)
                                                 .cornerRadius(6.0)
                                                 
                                             }
@@ -202,8 +203,8 @@ struct BuildingDetailCardView: View {
                                             
                                             Label("", systemImage: "hand.tap")
                                         }
-                                        .background(.bar)
-                                        .foregroundColor(.black)
+                                        .background(Color(UIColor.systemBackground))
+                                        .foregroundColor(Color.primary)
                                         .cornerRadius(6.0)
                                     }
                                     Divider()

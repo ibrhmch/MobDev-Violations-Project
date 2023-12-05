@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct FilterBar: View {
-    @Binding var selectedFilterOption: Int 
+    @Environment(\.colorScheme) var colorScheme
+    @Binding var selectedFilterOption: Int
+    @State var FGColor = Color.primary
     private let buttonWidth: CGFloat = 100
     private let textHeight: CGFloat = 45
     private let buttonHeight: CGFloat = 40
@@ -38,7 +40,7 @@ struct FilterBar: View {
                         Text("Active")
                             .frame(width: buttonWidth, height: textHeight)
                             .background(Color.clear)
-                            .foregroundColor(.black)
+                            .foregroundColor(FGColor)
                     }
                     Button(action: {
                         withAnimation {
@@ -48,7 +50,7 @@ struct FilterBar: View {
                         Text("All")
                             .frame(width: buttonWidth, height: textHeight)
                             .background(Color.clear)
-                            .foregroundColor(.black)
+                            .foregroundColor(FGColor)
                             .padding(.horizontal, 5)
                     }
                     
@@ -60,11 +62,11 @@ struct FilterBar: View {
                         Text("Dismissed")
                             .frame(width: buttonWidth, height: textHeight)
                             .background(Color.clear)
-                            .foregroundColor(.black)
+                            .foregroundColor(FGColor)
                     }
                 }
             }
-            .background(Color(red: 230/255, green: 230/255, blue: 230/255))
+            .background(colorScheme == .dark ? Color(red: 30/255, green: 30/255, blue: 30/255) : Color(red: 240/255, green: 240/255, blue: 240/255))
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
