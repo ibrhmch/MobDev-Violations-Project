@@ -172,7 +172,7 @@ struct BuildingDetailCardView: View {
                                                     
                                                     Label("", systemImage: "hand.tap")
                                                 }
-                                                .background(Color(UIColor.systemBackground))
+                                                .background(.fill)
                                                 .foregroundColor(Color.primary)
                                                 .cornerRadius(6.0)
                                                 
@@ -206,7 +206,7 @@ struct BuildingDetailCardView: View {
                                             
                                             Label("", systemImage: "hand.tap")
                                         }
-                                        .background(Color(UIColor.systemBackground))
+                                        .background(.fill)
                                         .foregroundColor(Color.primary)
                                         .cornerRadius(6.0)
                                     }

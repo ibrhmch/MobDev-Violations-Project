@@ -59,6 +59,7 @@ struct BuildingsTabView: View {
                                 VStack{
                                     Text("\(result.bin_id)")
                                         .font(.headline)
+                                        .italic()
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                     Text("\(result.address)")
                                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -66,7 +67,7 @@ struct BuildingsTabView: View {
                                 }
                             }
                             .padding()
-                            .background(colorScheme == .dark ? Color.black : Color(red: 240/255, green: 240/255, blue: 240/255))
+                            .background(.fill)
                             .foregroundColor(Color.primary)
                             .cornerRadius(10)
                         }

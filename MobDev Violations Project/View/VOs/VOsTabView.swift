@@ -65,7 +65,7 @@ struct VOsTabView: View {
                                     VOsNOVsListCardView(id: result.vo, status: result.status)
                                 }
                                 .padding(.horizontal)
-                                .background(colorScheme == .dark ? Color.black : Color(red: 240/255, green: 240/255, blue: 240/255))
+                                .background(.fill)
                                 .foregroundColor(Color.primary)
                                 .cornerRadius(6.0)
                     }
