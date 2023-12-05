@@ -28,7 +28,7 @@ struct SettingsTabView: View {
                 
                 HStack{
                     Toggle("Dark Mode",
-                            isOn: $darkModeEnabled.animation(.easeInOut(duration: 0.5)))
+                            isOn: $darkModeEnabled)
                     .padding(.horizontal)
                     .padding(.vertical, barVerticalPadding)
                     .background(.fill)
