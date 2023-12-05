@@ -12,6 +12,12 @@ struct SettingsTabView: View {
     @State var notificationsOn = false
     @AppStorage("darkModeEnabled") private var darkModeEnabled = false
     @State var barVerticalPadding: CGFloat = 10
+    @AppStorage("DEFAULT_FILTER_OPTION") var defaultFilterOption: Int = 0
+    @State var selectedFilterOption: Int = 0
+    
+    init() {
+        _selectedFilterOption = State(initialValue: defaultFilterOption)
+    }
 
     var body: some View {
         NavigationStack{
@@ -19,16 +25,6 @@ struct SettingsTabView: View {
                 HStack{
                     Toggle("Notification Alerts",
                             isOn: $notificationsOn)
-                    .padding(.horizontal)
-                    .padding(.vertical, barVerticalPadding)
-                    .background(.fill)
-                    .cornerRadius(5)
-                }
-                .padding(.horizontal)
-                
-                HStack{
-                    Toggle("Dark Mode",
-                            isOn: $darkModeEnabled)
                     .padding(.horizontal)
                     .padding(.vertical, barVerticalPadding)
                     .background(.fill)
@@ -66,6 +62,32 @@ struct SettingsTabView: View {
                                 isExpanded.toggle()
                             }
                     }
+                }
+                .padding(.horizontal)
+                
+                HStack{
+                    Toggle("Dark Mode",
+                            isOn: $darkModeEnabled)
+                    .padding(.horizontal)
+                    .padding(.vertical, barVerticalPadding)
+                    .background(.fill)
+                    .cornerRadius(5)
+                }
+                .padding(.horizontal)
+
+                HStack{
+                    VStack{
+                        Text("Default Violations Filter")
+                            .padding(.vertical)
+                        FilterBar(selectedFilterOption: $selectedFilterOption)
+                        .onChange(of:  selectedFilterOption){
+                            defaultFilterOption = selectedFilterOption
+                        }
+                    }                    
+                    .padding(.horizontal)
+                    .padding(.vertical, barVerticalPadding)
+                    .background(.fill)
+                    .cornerRadius(5)
                 }
                 .padding(.horizontal)
                 

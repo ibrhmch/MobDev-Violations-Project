@@ -11,8 +11,10 @@ import MapKit
 struct BuildingDetailCardView: View {
     @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = BuildingDetailsViewModel()
-    @State var selectedFilterOption: Int = 0
     @State var alertsEnabled = false
+    @AppStorage("DEFAULT_FILTER_OPTION") var defaultFilterOption: Int = 0
+    @State var selectedFilterOption: Int = 0
+    
     var building: Building
     
     var filteredVOs: [ViolationOrder] {
@@ -49,6 +51,7 @@ struct BuildingDetailCardView: View {
     
     init(_ bin_id: String, _ address: String){
         self.building = Building(bin_id: bin_id, address: address)
+        _selectedFilterOption = State(initialValue: defaultFilterOption)
     }
     
     var body: some View {
