@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SplashScreenView: View {
+    @AppStorage("darkModeEnabled") private var darkModeEnabled = false
     @Environment(\.colorScheme) var colorScheme
     @State private var isActive = false
     @State private var size = 0.8
@@ -44,6 +45,7 @@ struct SplashScreenView: View {
                     }
                 }
             }
+            .preferredColorScheme(darkModeEnabled ? .dark : .light)
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation(

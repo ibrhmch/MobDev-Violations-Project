@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("darkModeEnabled") private var darkModeEnabled = false
+
     var body: some View {
         TabView {
             BuildingsTabView()
@@ -31,6 +33,7 @@ struct ContentView: View {
                     systemImage: "gearshape")
             }
         }
+        .preferredColorScheme(darkModeEnabled ? .dark : .light)
     }
 }
 
