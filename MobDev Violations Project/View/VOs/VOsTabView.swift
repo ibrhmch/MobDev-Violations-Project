@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct VOsTabView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var searchText = ""
     @State private var recentSearches = [String]()
     @ObservedObject private var violationsVM = ViolationsSearchViewModel()
@@ -40,17 +41,17 @@ struct VOsTabView: View {
                         Button("Cancel") {
                             searchText = ""
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.primary)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 7)
-                        .background(.ultraThinMaterial)
+                        .background(.gray)
                         .cornerRadius(7)
                         
                         Spacer()
                     }
                 }
                 .padding()
-                .background(.white)
+                .background(Color(UIColor.systemBackground))
                 
                 Spacer()
                 
@@ -64,8 +65,8 @@ struct VOsTabView: View {
                                     VOsNOVsListCardView(id: result.vo, status: result.status)
                                 }
                                 .padding(.horizontal)
-                                .background(.bar)
-                                .foregroundColor(.black)
+                                .background(colorScheme == .dark ? Color.black : Color(red: 240/255, green: 240/255, blue: 240/255))
+                                .foregroundColor(Color.primary)
                                 .cornerRadius(6.0)
                     }
                 }  else {
