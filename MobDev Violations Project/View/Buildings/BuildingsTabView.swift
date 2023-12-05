@@ -41,7 +41,7 @@ struct BuildingsTabView: View {
                         .foregroundColor(Color.primary)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 7)
-                        .background(.gray)
+                        .background(.fill)
                         .cornerRadius(7)
                         
                         Spacer()
