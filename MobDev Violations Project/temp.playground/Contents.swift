@@ -155,3 +155,25 @@ struct BuildingDetailsResponse: Decodable {
 //let nepalCapital = capitalCity["Nepal"]
 //print(nepalCapital!)
 //
+//
+//var myDictionary: [String: Int] = ["apple": 5, "banana": 3, "orange": 4]
+//
+//myDictionary["apple"] = 10
+//
+//myDictionary["apple"]
+//
+//type(of: myDictionary)
+//
+//myDictionary["grapes"] = 10
+//
+//myDictionary
+//
+//myDictionary["banana"] = nil
+//
+//myDictionary
+//
+//let userDefaults = UserDefaults.standard
+//
+//userDefaults.set(myDictionary, forKey: "myKey")
+//
+//let pewPew = userDefaults.object(forKey: "myKey")
