@@ -15,7 +15,31 @@ struct BuildingDetailCardView: View {
     @AppStorage("DEFAULT_FILTER_OPTION") var defaultFilterOption: Int = 0
     @State var selectedFilterOption: Int = 0
     
+    // Dictionary to load the alertsStatuses of all the buildings
+    @State var listOfBinAlertsStatus: [String: Bool] = ["Default": false]
+    
     var building: Building
+    
+    init(_ bin_id: String, _ address: String){
+        self.building = Building(bin_id: bin_id, address: address)
+        _selectedFilterOption = State(initialValue: defaultFilterOption)
+        
+        // Retrieve value from UserDefaults `listOfBinAlertsStatus` and initialize the State variable
+        let userDefaults = UserDefaults.standard
+        if let storedListOfBinAlertsStatus = userDefaults.object(forKey: "listOfBinAlertsStatus") as? [String: Bool] {
+            _listOfBinAlertsStatus = State(initialValue: storedListOfBinAlertsStatus)
+        } else {
+            _listOfBinAlertsStatus = State(initialValue: [:])
+        }
+        
+        // Set alerts enabled = to saved value else default to false
+        _alertsEnabled = State(initialValue: listOfBinAlertsStatus["\(building.bin_id)"] ?? false)
+    }
+    
+    // Function to persist the bin: alertsStatus data dictionary
+    private func saveAlertsStatus(_ listOfBinAlertsStatus: [String: Bool]) {
+        UserDefaults.standard.set(listOfBinAlertsStatus, forKey: "listOfBinAlertsStatus")
+    }
     
     var filteredVOs: [ViolationOrder] {
         if (selectedFilterOption == 1) {
@@ -49,11 +73,6 @@ struct BuildingDetailCardView: View {
         }
     }
     
-    init(_ bin_id: String, _ address: String){
-        self.building = Building(bin_id: bin_id, address: address)
-        _selectedFilterOption = State(initialValue: defaultFilterOption)
-    }
-    
     var body: some View {
         VStack{
             if !viewModel.buildingDetailsAreSet {
@@ -74,6 +93,9 @@ struct BuildingDetailCardView: View {
                             //Enable Notifications Button
                             Button(action: {
                                 alertsEnabled = !alertsEnabled
+                                listOfBinAlertsStatus[building.bin_id] = alertsEnabled ? alertsEnabled : nil
+                                saveAlertsStatus(listOfBinAlertsStatus)
+                                print(listOfBinAlertsStatus)
                             }) {
                                 Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
                                     .resizable()
