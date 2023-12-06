@@ -101,7 +101,7 @@ struct BuildingDetailCardView: View {
                                     .resizable()
                                     .frame(width: 20, height: 20)
                                     .padding(7)
-                                    .background(!alertsEnabled ? Color.purple : Color.green)
+                                    .background(!alertsEnabled ? Color.purple : Color(red: 61/255, green: 173/255, blue: 166/255))
                                     .clipShape(Circle())
                                     .foregroundColor(.white)
                             }
