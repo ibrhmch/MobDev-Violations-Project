@@ -22,77 +22,79 @@ struct SettingsTabView: View {
     var body: some View {
         NavigationStack{
             VStack{
-                HStack{
-                    Toggle("Notification Alerts",
-                            isOn: $notificationsOn)
+                ScrollView {
+                    HStack{
+                        Toggle("Notification Alerts",
+                                isOn: $notificationsOn)
+                        .padding(.horizontal)
+                        .padding(.vertical, barVerticalPadding)
+                        .background(.fill)
+                        .cornerRadius(5)
+                    }
                     .padding(.horizontal)
-                    .padding(.vertical, barVerticalPadding)
-                    .background(.fill)
-                    .cornerRadius(5)
-                }
-                .padding(.horizontal)
-                
-                HStack{
-                    VStack {
-                        HStack{
-                            Text("Subscribed Buildings")
-                            Spacer()
-                            Image(systemName: !isExpanded ? "rectangle.expand.vertical" : "rectangle.compress.vertical")
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 4)
-                                .background(.gray)
-                                .cornerRadius(5)
-                        }
-                        if isExpanded {
-                            ScrollView{
-                                Text("More Info")
-                                Text("And more")
+                    
+                    HStack{
+                        VStack {
+                            HStack{
+                                Text("Subscribed Buildings")
+                                Spacer()
+                                Image(systemName: !isExpanded ? "rectangle.expand.vertical" : "rectangle.compress.vertical")
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 4)
+                                    .background(.fill)
+                                    .foregroundColor(Color.primary)
+                                    .cornerRadius(5)
                             }
+                            if isExpanded {
+                                ScrollView{
+                                    Text("More Info")
+                                    Text("And more")
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, barVerticalPadding)
+                        .frame(maxWidth: .infinity)
+                        .background(.fill)
+                        .cornerRadius(5)
+                        .transition(.move(edge: .trailing))
+                        .onTapGesture {
+                            withAnimation(
+                                .easeOut(duration: 0.2)) {
+                                    isExpanded.toggle()
+                                }
                         }
                     }
                     .padding(.horizontal)
-                    .padding(.vertical, barVerticalPadding)
-                    .frame(maxWidth: .infinity)
-                    .background(.fill)
-                    .cornerRadius(5)
-                    .transition(.move(edge: .trailing))
-                    .onTapGesture {
-                        withAnimation(
-                            .easeOut(duration: 0.2)) {
-                                isExpanded.toggle()
-                            }
+                    
+                    HStack{
+                        Toggle("Dark Mode",
+                                isOn: $darkModeEnabled)
+                        .padding(.horizontal)
+                        .padding(.vertical, barVerticalPadding)
+                        .background(.fill)
+                        .cornerRadius(5)
                     }
-                }
-                .padding(.horizontal)
-                
-                HStack{
-                    Toggle("Dark Mode",
-                            isOn: $darkModeEnabled)
                     .padding(.horizontal)
-                    .padding(.vertical, barVerticalPadding)
-                    .background(.fill)
-                    .cornerRadius(5)
-                }
-                .padding(.horizontal)
 
-                HStack{
-                    VStack{
-                        Text("Default Violations Filter")
-                            .padding(.vertical)
-                        FilterBar(selectedFilterOption: $selectedFilterOption)
-                        .onChange(of:  selectedFilterOption){
-                            defaultFilterOption = selectedFilterOption
+                    HStack{
+                        VStack{
+                            Text("Default Violations Filter")
+                                .padding(.vertical)
+                            FilterBar(selectedFilterOption: $selectedFilterOption)
+                            .onChange(of:  selectedFilterOption){
+                                defaultFilterOption = selectedFilterOption
+                            }
                         }
-                    }                    
+                        .padding(.horizontal)
+                        .padding(.vertical, barVerticalPadding)
+                        .background(.fill)
+                        .cornerRadius(5)
+                    }
                     .padding(.horizontal)
-                    .padding(.vertical, barVerticalPadding)
-                    .background(.fill)
-                    .cornerRadius(5)
+                    
+                    Spacer()
                 }
-                .padding(.horizontal)
-                
-                Spacer()
-                
             }
             .navigationBarTitle("Settings", displayMode: .inline)
             .font(.subheadline)
