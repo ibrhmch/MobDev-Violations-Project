@@ -14,6 +14,11 @@ struct SettingsTabView: View {
     @State var barVerticalPadding: CGFloat = 10
     @AppStorage("DEFAULT_FILTER_OPTION") var defaultFilterOption: Int = 0
     @State var selectedFilterOption: Int = 0
+    var tempListOfBuildings = ["1076262", "1023455", "1231454"]
+//    @AppStorage("SUBSCRIBED_BUILDINGS_LIST") var listOfSubscribedBuildings: [String: Bool] = ["BOGUS BUILDING": false]
+    
+    // Dictionary to load the alertsStatuses of all the buildings
+    @State var listOfBinAlertsStatus: [String: Bool] = ["Default": false]
     
     init() {
         _selectedFilterOption = State(initialValue: defaultFilterOption)
@@ -33,6 +38,10 @@ struct SettingsTabView: View {
                     }
                     .padding(.horizontal)
                     
+                    Divider()
+                    .padding(.horizontal)
+                    
+                    // Subscribed Buildings List
                     HStack{
                         VStack {
                             HStack{
@@ -47,8 +56,28 @@ struct SettingsTabView: View {
                             }
                             if isExpanded {
                                 ScrollView{
-                                    Text("More Info")
-                                    Text("And more")
+                                    ForEach(Array(listOfBinAlertsStatus.keys), id:\.self){key in
+                                        HStack{
+                                            Text("\(key)")
+                                            
+                                            Spacer()
+                                            
+                                            //Enable Notifications Button
+                                            Button(action: {
+                                                
+                                            }) {
+                                                Image(systemName: "bell.slash.circle")
+                                                    .resizable()
+                                                    .frame(width: 20, height: 20)
+                                                    .padding(7)
+                                                    .background(Color.purple)
+                                                    .clipShape(Circle())
+                                                    .foregroundColor(.white)
+                                            }
+                                        }
+                                        
+                                        Divider()
+                                    }
                                 }
                             }
                         }
@@ -67,6 +96,9 @@ struct SettingsTabView: View {
                     }
                     .padding(.horizontal)
                     
+                    Divider()
+                    .padding(.horizontal)
+                    
                     HStack{
                         Toggle("Dark Mode",
                                 isOn: $darkModeEnabled)
@@ -76,7 +108,10 @@ struct SettingsTabView: View {
                         .cornerRadius(5)
                     }
                     .padding(.horizontal)
-
+                    
+                    Divider()
+                    .padding(.horizontal)
+                    
                     HStack{
                         VStack{
                             Text("Default Violations Filter")
@@ -99,6 +134,15 @@ struct SettingsTabView: View {
             .navigationBarTitle("Settings", displayMode: .inline)
             .font(.subheadline)
             .padding(.top, 30)
+            .onAppear(){
+                let userDefaults = UserDefaults.standard
+                if let storedListOfBinAlertsStatus = userDefaults.object(forKey: "listOfBinAlertsStatus") as? [String: Bool] {
+                    listOfBinAlertsStatus = storedListOfBinAlertsStatus
+                } else {
+                    listOfBinAlertsStatus = [:]
+                }
+                print(listOfBinAlertsStatus)
+            }
         }
     }
 }

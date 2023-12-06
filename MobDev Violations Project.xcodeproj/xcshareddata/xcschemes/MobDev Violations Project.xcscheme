@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "59D61F7F2AEB4C26000E25C2"
-               BuildableName = "MobDev Violations Project.app"
+               BuildableName = "NY Violations.app"
                BlueprintName = "MobDev Violations Project"
                ReferencedContainer = "container:MobDev Violations Project.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "59D61F7F2AEB4C26000E25C2"
-            BuildableName = "MobDev Violations Project.app"
+            BuildableName = "NY Violations.app"
             BlueprintName = "MobDev Violations Project"
             ReferencedContainer = "container:MobDev Violations Project.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "59D61F7F2AEB4C26000E25C2"
-            BuildableName = "MobDev Violations Project.app"
+            BuildableName = "NY Violations.app"
             BlueprintName = "MobDev Violations Project"
             ReferencedContainer = "container:MobDev Violations Project.xcodeproj">
          </BuildableReference>
