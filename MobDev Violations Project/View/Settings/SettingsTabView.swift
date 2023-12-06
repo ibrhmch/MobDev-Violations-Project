@@ -31,6 +31,7 @@ struct SettingsTabView: View {
                     HStack{
                         Toggle("Notification Alerts",
                                 isOn: $notificationsOn)
+                        .toggleStyle(SwitchToggleStyle(tint: Color(red: 61/255, green: 173/255, blue: 166/255)))
                         .padding(.horizontal)
                         .padding(.vertical, barVerticalPadding)
                         .background(.fill)
@@ -53,30 +54,32 @@ struct SettingsTabView: View {
                                     .background(.fill)
                                     .foregroundColor(Color.primary)
                                     .cornerRadius(5)
+                                
+                                Spacer()
+                                    .frame(width: 1)
                             }
                             if isExpanded {
                                 ScrollView{
+                                    Divider()
                                     ForEach(Array(listOfBinAlertsStatus.keys), id:\.self){key in
                                         HStack{
                                             Text("\(key)")
+                                                .italic()
                                             
                                             Spacer()
                                             
-                                            //Enable Notifications Button
-                                            Button(action: {
-                                                
-                                            }) {
-                                                Image(systemName: "bell.slash.circle")
-                                                    .resizable()
-                                                    .frame(width: 20, height: 20)
-                                                    .padding(7)
-                                                    .background(Color.purple)
-                                                    .clipShape(Circle())
-                                                    .foregroundColor(.white)
-                                            }
+                                            Image(systemName: "bell.and.waveform.fill")
+                                                .resizable()
+                                                .frame(width: 15, height: 15)
+                                                .padding(.vertical, 7)
+                                                .padding(.horizontal, 12)
+                                                .background(Color(red: 61/255, green: 173/255, blue: 166/255))
+                                                .clipShape(Circle())
+                                                .foregroundColor(.white)
+                                            
+                                            Spacer()
+                                                .frame(width: 3)
                                         }
-                                        
-                                        Divider()
                                     }
                                 }
                             }
@@ -102,6 +105,7 @@ struct SettingsTabView: View {
                     HStack{
                         Toggle("Dark Mode",
                                 isOn: $darkModeEnabled)
+                        .toggleStyle(SwitchToggleStyle(tint: Color(red: 61/255, green: 173/255, blue: 166/255)))
                         .padding(.horizontal)
                         .padding(.vertical, barVerticalPadding)
                         .background(.fill)
