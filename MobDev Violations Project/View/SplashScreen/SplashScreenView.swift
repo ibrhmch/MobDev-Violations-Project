@@ -24,17 +24,17 @@ struct SplashScreenView: View {
             
             VStack{
                 VStack{
-                    Image(systemName: "building.2.fill")
+                    Image(systemName: "building.2")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 150)
                         .font(.system(size: 80))
-                        .foregroundColor(Color(red: 67/255, green: 129/255, blue: 166/255))
+                        .foregroundColor(Color.primary.opacity(0.8))
                         .padding()
                     
                     Text("New York Building Violations")
-                        .font(Font.custom("Savoye LET", size: 35))
-                        .foregroundColor(colorScheme == .dark ? Color(red: 237/255, green: 237/255, blue: 237/255) : .black.opacity(0.80))
+                        .font(Font.custom("Menlo", size: 15))
+                        .foregroundColor(Color.primary.opacity(0.8))
                 }
                 .scaleEffect(size)
                 .opacity(opacity)
@@ -45,6 +45,7 @@ struct SplashScreenView: View {
                     }
                 }
             }
+//            .background(Color(red: 3/255, green: 38/255, blue:66/255))
             .preferredColorScheme(darkModeEnabled ? .dark : .light)
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
