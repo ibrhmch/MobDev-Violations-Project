@@ -68,14 +68,22 @@ struct SettingsTabView: View {
                                             
                                             Spacer()
                                             
-                                            Image(systemName: "bell.and.waveform.fill")
-                                                .resizable()
-                                                .frame(width: 15, height: 15)
-                                                .padding(.vertical, 7)
-                                                .padding(.horizontal, 12)
-                                                .background(Color(red: 61/255, green: 173/255, blue: 166/255))
-                                                .clipShape(Circle())
-                                                .foregroundColor(.white)
+                                            Button(action: {
+                                                withAnimation(
+                                                    .bouncy(duration: 0.3)) {
+                                                        listOfBinAlertsStatus[key] = nil
+                                                        UserDefaults.standard.set(listOfBinAlertsStatus, forKey: "listOfBinAlertsStatus")
+                                                    }
+                                            }) {                                            
+                                                Image(systemName: "bell.and.waveform.fill")
+                                                    .resizable()
+                                                    .frame(width: 15, height: 15)
+                                                    .padding(.vertical, 7)
+                                                    .padding(.horizontal, 12)
+                                                    .background(Color(red: 61/255, green: 173/255, blue: 166/255))
+                                                    .clipShape(Circle())
+                                                    .foregroundColor(.white)
+                                            }
                                             
                                             Spacer()
                                                 .frame(width: 3)
