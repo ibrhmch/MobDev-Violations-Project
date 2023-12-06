@@ -23,17 +23,6 @@ struct BuildingDetailCardView: View {
     init(_ bin_id: String, _ address: String){
         self.building = Building(bin_id: bin_id, address: address)
         _selectedFilterOption = State(initialValue: defaultFilterOption)
-        
-        // Retrieve value from UserDefaults `listOfBinAlertsStatus` and initialize the State variable
-        let userDefaults = UserDefaults.standard
-        if let storedListOfBinAlertsStatus = userDefaults.object(forKey: "listOfBinAlertsStatus") as? [String: Bool] {
-            _listOfBinAlertsStatus = State(initialValue: storedListOfBinAlertsStatus)
-        } else {
-            _listOfBinAlertsStatus = State(initialValue: [:])
-        }
-        
-        // Set alerts enabled = to saved value else default to false
-        _alertsEnabled = State(initialValue: listOfBinAlertsStatus["\(building.bin_id)"] ?? false)
     }
     
     // Function to persist the bin: alertsStatus data dictionary
@@ -246,7 +235,20 @@ struct BuildingDetailCardView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(){
+            // Retrieve value from UserDefaults `listOfBinAlertsStatus` and initialize the State variable
+            let userDefaults = UserDefaults.standard
+            if let storedListOfBinAlertsStatus = userDefaults.object(forKey: "listOfBinAlertsStatus") as? [String: Bool] {
+                listOfBinAlertsStatus = storedListOfBinAlertsStatus
+            } else {
+                listOfBinAlertsStatus = [:]
+            }
+            
+            // Set alerts enabled = to saved value else default to false
+            alertsEnabled = listOfBinAlertsStatus["\(building.bin_id)"] ?? false
+        }
         .task(priority: .userInitiated){
+            //TODO remove this artificial delay
             try? await Task.sleep(nanoseconds: 1_500_000_000)
             viewModel.setBuilding(building.bin_id)
         }
