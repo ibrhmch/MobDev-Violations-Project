@@ -12,10 +12,13 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            BuildingsTabView()
-                .tabItem{
-                    Label("Buildings", systemImage: "building.2.fill")
-            }
+            withAnimation(
+                .easeIn(duration: 1.2)) {
+                    BuildingsTabView()
+                        .tabItem{
+                            Label("Buildings", systemImage: "building.2.fill")
+                    }
+                }
             
             VOsTabView()
                 .tabItem{
