@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct SettingsTabView: View {
     @State var isExpanded = false
@@ -15,9 +16,6 @@ struct SettingsTabView: View {
     @AppStorage("DEFAULT_FILTER_OPTION") var defaultFilterOption: Int = 0
     @State var selectedFilterOption: Int = 0
     var tempListOfBuildings = ["1076262", "1023455", "1231454"]
-//    @AppStorage("SUBSCRIBED_BUILDINGS_LIST") var listOfSubscribedBuildings: [String: Bool] = ["BOGUS BUILDING": false]
-    
-    // Dictionary to load the alertsStatuses of all the buildings
     @State var listOfBinAlertsStatus: [String: Bool] = ["Default": false]
     
     init() {
@@ -25,9 +23,9 @@ struct SettingsTabView: View {
     }
 
     var body: some View {
-        NavigationStack{
+        NavigationStack{            
             VStack{
-                ScrollView {
+                ScrollView {                    
                     HStack{
                         Toggle("Notification Alerts",
                                 isOn: $notificationsOn)
