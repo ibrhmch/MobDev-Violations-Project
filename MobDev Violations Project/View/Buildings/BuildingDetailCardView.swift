@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct BuildingDetailCardView: View {
+    @AppStorage("HIDE_BUILDING_DETAILS") var HIDE_BUILDING_DETAILS = false
     @State var hideDetails = false
     @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = BuildingDetailsViewModel()
@@ -24,6 +25,7 @@ struct BuildingDetailCardView: View {
     init(_ bin_id: String, _ address: String){
         self.building = Building(bin_id: bin_id, address: address)
         _selectedFilterOption = State(initialValue: defaultFilterOption)
+        _hideDetails = State(initialValue: HIDE_BUILDING_DETAILS)
     }
     
     // Function to persist the bin: alertsStatus data dictionary
@@ -177,6 +179,7 @@ struct BuildingDetailCardView: View {
                         withAnimation(
                             .bouncy(duration: 0.3)){
                                 hideDetails = !hideDetails
+                                HIDE_BUILDING_DETAILS = !HIDE_BUILDING_DETAILS
                             }
                     }
                     
