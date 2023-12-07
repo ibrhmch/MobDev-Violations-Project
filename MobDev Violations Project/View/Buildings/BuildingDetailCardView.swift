@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct BuildingDetailCardView: View {
+    @State var hideDetails = false
     @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = BuildingDetailsViewModel()
     @State var alertsEnabled = false
@@ -70,96 +71,119 @@ struct BuildingDetailCardView: View {
             }
             else
             {
-                VStack{
-                    GroupBox() {
-                        // Alerts HStack
-                        HStack{
-                            Label("Alerts \(!alertsEnabled ? "Disabled" : "Enabled")", systemImage: "bell.fill")
-                                .font(.subheadline)
-                            
-                            Spacer()
-                            
-                            //Enable Notifications Button
-                            Button(action: {
-                                alertsEnabled = !alertsEnabled
-                                listOfBinAlertsStatus[building.bin_id] = alertsEnabled ? alertsEnabled : nil
-                                saveAlertsStatus(listOfBinAlertsStatus)
-                                print(listOfBinAlertsStatus)
-                            }) {
-                                Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                    .padding(7)
-                                    .background(!alertsEnabled ? Color.purple : Color(red: 61/255, green: 173/255, blue: 166/255))
-                                    .clipShape(Circle())
-                                    .foregroundColor(.white)
-                            }
-                        }
-                        
-                        //Get Directions HStack
-                        HStack{
-                            Label("\(building.address)", systemImage: "mappin.and.ellipse")
-                                .font(.subheadline)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                let location = "\(building.address) NYC"
-                                let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                                if let url = URL(string: "http://maps.apple.com/?q=\(encodedLocation)") {
-                                    if UIApplication.shared.canOpenURL(url) {
-                                        UIApplication.shared.open(url)
-                                    }
-                                }
-                            }) {
+                if !hideDetails{
+                    VStack{
+                        GroupBox() {
+                            // Alerts HStack
+                            HStack{
+                                Label("Alerts \(!alertsEnabled ? "Disabled" : "Enabled")", systemImage: "bell.fill")
+                                    .font(.subheadline)
                                 
-                                HStack{
-                                    Image(systemName: "arrow.triangle.turn.up.right.circle")
+                                Spacer()
+                                
+                                //Enable Notifications Button
+                                Button(action: {
+                                    alertsEnabled = !alertsEnabled
+                                    listOfBinAlertsStatus[building.bin_id] = alertsEnabled ? alertsEnabled : nil
+                                    saveAlertsStatus(listOfBinAlertsStatus)
+                                    print(listOfBinAlertsStatus)
+                                }) {
+                                    Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .padding(7)
-                                        .background(.blue)
+                                        .background(!alertsEnabled ? Color.purple : Color(red: 61/255, green: 173/255, blue: 166/255))
                                         .clipShape(Circle())
                                         .foregroundColor(.white)
                                 }
                             }
-                        }
-                        
-                        // Building Information
-                        VStack() {
-                            Divider()
                             
-                            HStack {
-                                Text("BIN: ")
+                            //Get Directions HStack
+                            HStack{
+                                Label("\(building.address)", systemImage: "mappin.and.ellipse")
+                                    .font(.subheadline)
+                                
                                 Spacer()
-                                Text("\(building.bin_id)")
+                                
+                                Button(action: {
+                                    let location = "\(building.address) NYC"
+                                    let encodedLocation = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                    if let url = URL(string: "http://maps.apple.com/?q=\(encodedLocation)") {
+                                        if UIApplication.shared.canOpenURL(url) {
+                                            UIApplication.shared.open(url)
+                                        }
+                                    }
+                                }) {
+                                    
+                                    HStack{
+                                        Image(systemName: "arrow.triangle.turn.up.right.circle")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                            .padding(7)
+                                            .background(.blue)
+                                            .clipShape(Circle())
+                                            .foregroundColor(.white)
+                                    }
+                                }
                             }
-                            HStack {
-                                Text("Block: ")
-                                Spacer()
-                                Text("static")
+                            
+                            // Building Information
+                            VStack() {
+                                Divider()
+                                
+                                HStack {
+                                    Text("BIN: ")
+                                    Spacer()
+                                    Text("\(building.bin_id)")
+                                }
+                                HStack {
+                                    Text("Block: ")
+                                    Spacer()
+                                    Text("static")
+                                }
+                                HStack {
+                                    Text("Active VOs:")
+                                    Spacer()
+                                    Text("\(viewModel.buildingDetails.violations.activeviolations)")
+                                }
+                                HStack {
+                                    Text("Active NOVs:")
+                                    Spacer()
+                                    Text("\(viewModel.buildingDetails.notices.activenotices)")
+                                }
                             }
-                            HStack {
-                                Text("Active VOs:")
-                                Spacer()
-                                Text("\(viewModel.buildingDetails.violations.activeviolations)")
-                            }
-                            HStack {
-                                Text("Active NOVs:")
-                                Spacer()
-                                Text("\(viewModel.buildingDetails.notices.activenotices)")
-                            }
+                            .font(.subheadline)
                         }
-                        .font(.subheadline)
+                        .groupBoxStyle(DefaultGroupBoxStyle())
+                        
+                        NotificationScheduleView(bin_id: building.bin_id)
+                        
+                        Divider()
                     }
-                    .groupBoxStyle(DefaultGroupBoxStyle())
+                    .padding(.horizontal)
+                }
+                
+                VStack{
+                    HStack{
+                        Image(systemName: hideDetails ? "menubar.arrow.down.rectangle" : "menubar.arrow.up.rectangle" )
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal)
+                        .padding(.vertical, 10)
+                        .background(.fill)
+                        .cornerRadius(5)
+                    }
+                    .padding(.horizontal)
+                    .onTapGesture {
+                        withAnimation(
+                            .bouncy(duration: 0.3)){
+                                hideDetails = !hideDetails
+                            }
+                    }
                     
                     FilterBar(selectedFilterOption: $selectedFilterOption)
-                    
                     Divider()
                 }
                 .padding(.horizontal)
-
                 
                 ScrollView{
                     VStack(alignment: .center, spacing: 20) {
