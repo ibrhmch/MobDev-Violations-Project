@@ -71,7 +71,7 @@ struct VOsTabView: View {
                     }
                 }  else {
                     if searchText == "" {
-                        SearchForThisView(message: "Please search for a violation")
+                        SearchSuggestionMessageView(message: "Please search for a violation")
                     } else {
                         ZeroResultsFoundView(message: "Please search for a different violation")
                     }

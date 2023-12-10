@@ -71,7 +71,7 @@ struct NOVsTabView: View {
                     }
                 } else {
                     if searchText == "" {
-                        SearchForThisView(message: "Please search for a notice of violation")
+                        SearchSuggestionMessageView(message: "Please search for a notice of violation")
                     } else {
                         ZeroResultsFoundView(message: "Please search for a different notice of violation")
                     }

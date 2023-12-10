@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchForThisView: View {
+struct SearchSuggestionMessageView: View {
     var message: String = "Please search for something"
     
     var body: some View {
@@ -26,5 +26,5 @@ struct SearchForThisView: View {
 }
 
 #Preview {
-    SearchForThisView(message: "Please search for something")
+    SearchSuggestionMessageView(message: "Please search for something")
 }
