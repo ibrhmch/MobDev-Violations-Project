@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UserNotifications
+import AVFoundation
 
 struct NotificationScheduleView: View {
     @State private var scheduleTime = Date()
@@ -67,6 +68,7 @@ struct NotificationScheduleView: View {
                                 subtitle = ""
                                 scheduleTime = Date()
                             }
+                        AudioServicesPlaySystemSound(1110)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal)
