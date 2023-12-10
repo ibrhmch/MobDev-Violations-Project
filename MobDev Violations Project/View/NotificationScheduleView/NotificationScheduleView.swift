@@ -11,7 +11,7 @@ import UserNotifications
 struct NotificationScheduleView: View {
     @State private var scheduleTime = Date()
     @State private var notificationsDisabledMessage = false
-    var bin_id = "1076262"
+    var bin_id = "1076262" // default bin id
     @State private var subtitle = ""
     @State private var reminderViewOpen: Bool = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
