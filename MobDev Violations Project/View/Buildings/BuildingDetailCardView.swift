@@ -167,10 +167,10 @@ struct BuildingDetailCardView: View {
                 
                 VStack{
                     HStack{
-                        Image(systemName: hideDetails ? "menubar.arrow.down.rectangle" : "menubar.arrow.up.rectangle" )
+                        Image(systemName: hideDetails ? "arrow.down.to.line" : "arrow.up.to.line" )
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal)
-                        .padding(.vertical, 10)
+                        .padding(.vertical, 8)
                         .background(.fill)
                         .cornerRadius(5)
                     }
