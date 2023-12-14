@@ -10,6 +10,7 @@ import UserNotifications
 import AVFoundation
 
 struct NotificationScheduleView: View {
+    @Binding var hideEveryThing: Bool
     @State private var scheduleTime = Date()
     @State private var notificationsDisabledMessage = false
     var bin_id = "1076262" // default bin id
@@ -67,6 +68,7 @@ struct NotificationScheduleView: View {
                                 reminderViewOpen = false
                                 subtitle = ""
                                 scheduleTime = Date()
+                                hideEveryThing = false
                             }
                         AudioServicesPlaySystemSound(1110)
                     }
@@ -111,6 +113,7 @@ struct NotificationScheduleView: View {
                                 .bouncy(duration: 0.3)){
                                     notificationsDisabledMessage = true
                                     reminderViewOpen = false
+                                    hideEveryThing = false
                                 }
                             
                         } else if settings.authorizationStatus == .authorized {
@@ -118,6 +121,7 @@ struct NotificationScheduleView: View {
                                 .bouncy(duration: 0.3)) {
                                     notificationsDisabledMessage = false
                                     reminderViewOpen = !reminderViewOpen
+                                    hideEveryThing = reminderViewOpen
                                     subtitle = ""
                                     scheduleTime = Date()
                                 }
@@ -140,6 +144,6 @@ struct NotificationScheduleView: View {
     }
 }
 
-#Preview {
-    NotificationScheduleView(bin_id: "1076262")
-}
+//#Preview {
+//    NotificationScheduleView(bin_id: "1076262")
+//}
