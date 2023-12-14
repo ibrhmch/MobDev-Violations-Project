@@ -124,9 +124,10 @@ struct NotificationScheduleView: View {
                         }
                     })
                 }
+                .font(.subheadline)
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
-                .padding(.vertical, 10)
+                .padding(.vertical, 8)
                 .background(.fill)
                 .cornerRadius(5)
             }
