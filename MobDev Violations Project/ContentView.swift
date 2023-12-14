@@ -22,12 +22,12 @@ struct ContentView: View {
             
             VOsTabView()
                 .tabItem{
-                    Label("VOs", systemImage: "signpost.left")
+                    Label("VOs", systemImage: "signpost.and.arrowtriangle.up")
             }
             
             NOVsTabView()
                 .tabItem{
-                    Label("NOVs", systemImage: "signpost.right")
+                    Label("NOVs", systemImage: "signpost.right.and.left")
             }
             
             SettingsTabView()
