@@ -24,7 +24,7 @@ struct FilterBar: View {
                 // Highlighted Rectangle
                 Rectangle()
                     .frame(width: buttonWidth, height: buttonHeight)
-                    .foregroundColor(selectedFilterOption == 1 ? defaultColor : (selectedFilterOption == 0) ? Color(red: 61/255, green: 173/255, blue: 166/255) : .purple)
+                    .foregroundColor(selectedFilterOption == 1 ? defaultColor : (selectedFilterOption == 0) ? Color("ActiveColor") : .purple)
                     .cornerRadius(8)
                     .offset(x: CGFloat(selectedFilterOption) * buttonWidth - buttonWidth)
                     .transition(.slide)

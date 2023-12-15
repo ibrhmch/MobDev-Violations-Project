@@ -102,7 +102,7 @@ struct BuildingDetailCardView: View {
                                         }
                                         .padding(.horizontal, 15)
                                         .padding(.vertical, 4)
-                                        .background(!alertsEnabled ? Color.purple : Color(red: 61/255, green: 173/255, blue: 166/255))
+                                        .background(!alertsEnabled ? Color.purple : Color("ActiveColor"))
                                         .cornerRadius(8)
                                     }
                                 }

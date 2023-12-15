@@ -29,7 +29,7 @@ struct SettingsTabView: View {
                     HStack{
                         Toggle("Notification Alerts",
                                 isOn: $notificationsOn)
-                        .toggleStyle(SwitchToggleStyle(tint: Color(red: 61/255, green: 173/255, blue: 166/255)))
+                        .toggleStyle(SwitchToggleStyle(tint: Color("ActiveColor")))
                         .padding(.horizontal)
                         .padding(.vertical, barVerticalPadding)
                         .background(.fill)
@@ -78,7 +78,7 @@ struct SettingsTabView: View {
                                                     .frame(width: 15, height: 15)
                                                     .padding(.vertical, 7)
                                                     .padding(.horizontal, 12)
-                                                    .background(Color(red: 61/255, green: 173/255, blue: 166/255))
+                                                    .background(Color("ActiveColor"))
                                                     .clipShape(Circle())
                                                     .foregroundColor(.white)
                                             }
@@ -111,7 +111,7 @@ struct SettingsTabView: View {
                     HStack{
                         Toggle("Dark Mode",
                                 isOn: $darkModeEnabled)
-                        .toggleStyle(SwitchToggleStyle(tint: Color(red: 61/255, green: 173/255, blue: 166/255)))
+                        .toggleStyle(SwitchToggleStyle(tint: Color("ActiveColor")))
                         .padding(.horizontal)
                         .padding(.vertical, barVerticalPadding)
                         .background(.fill)
