@@ -9,7 +9,7 @@ import SwiftUI
 import UserNotifications
 import AVFoundation
 
-struct NotificationScheduleView: View {
+struct ReminderSchedulingView: View {
     @Binding var hideEveryThing: Bool
     @State private var scheduleTime = Date()
     @State private var notificationsDisabledMessage = false

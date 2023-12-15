@@ -187,7 +187,7 @@ struct BuildingDetailCardView: View {
                             .groupBoxStyle(DefaultGroupBoxStyle())
                         }
                         
-                        NotificationScheduleView(hideEveryThing: $hideEveryThing, bin_id: building.bin_id)
+                        ReminderSchedulingView(hideEveryThing: $hideEveryThing, bin_id: building.bin_id)
                         
                         Divider()
                     }
