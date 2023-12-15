@@ -10,33 +10,45 @@ import SwiftUI
 struct ContentView: View {
     @AppStorage("darkModeEnabled") private var darkModeEnabled = false
 
+    @StateObject var connectivity = NetworkConnectivity()
+
     var body: some View {
-        TabView {
-            withAnimation(
-                .easeIn(duration: 1.2)) {
-                    BuildingsTabView()
+        VStack {
+            if !connectivity.isConnected {
+                ContentUnavailableView(
+                            "No Internet Connection",
+                            systemImage: "wifi.exclamationmark",
+                            description: Text("Please check your connection and try again.")
+                        )
+            } else {
+                TabView {
+                    withAnimation(
+                        .easeIn(duration: 1.2)) {
+                            BuildingsTabView()
+                                .tabItem{
+                                    Label("Buildings", systemImage: "building.2.fill")
+                            }
+                        }
+                    
+                    VOsTabView()
                         .tabItem{
-                            Label("Buildings", systemImage: "building.2.fill")
+                            Label("VOs", systemImage: "signpost.and.arrowtriangle.up")
+                    }
+                    
+                    NOVsTabView()
+                        .tabItem{
+                            Label("NOVs", systemImage: "signpost.right.and.left")
+                    }
+                    
+                    SettingsTabView()
+                        .tabItem{
+                            Label("Settings",
+                            systemImage: "gearshape")
                     }
                 }
-            
-            VOsTabView()
-                .tabItem{
-                    Label("VOs", systemImage: "signpost.and.arrowtriangle.up")
-            }
-            
-            NOVsTabView()
-                .tabItem{
-                    Label("NOVs", systemImage: "signpost.right.and.left")
-            }
-            
-            SettingsTabView()
-                .tabItem{
-                    Label("Settings",
-                    systemImage: "gearshape")
+                .preferredColorScheme(darkModeEnabled ? .dark : .light)
             }
         }
-        .preferredColorScheme(darkModeEnabled ? .dark : .light)
     }
 }
 
