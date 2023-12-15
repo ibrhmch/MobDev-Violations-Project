@@ -227,7 +227,7 @@ struct BuildingDetailCardView: View {
                                             .padding(.vertical, 5)
                                     }
                                 }
-                                .padding()
+                                .padding(.horizontal)
                             }
                             .groupBoxStyle(DefaultGroupBoxStyle())
                             
@@ -259,12 +259,12 @@ struct BuildingDetailCardView: View {
                                             .padding(.vertical, 5)
                                     }
                                 }
-                                .padding()
+                                .padding(.horizontal)
                             }
                             .groupBoxStyle(DefaultGroupBoxStyle())
 
                         }
-                        .padding()
+                        .padding(.horizontal)
                     }
                 }
             }
@@ -281,6 +281,8 @@ struct BuildingDetailCardView: View {
             
             // Set alerts enabled = to saved value else default to false
             alertsEnabled = listOfBinAlertsStatus["\(building.bin_id)"] ?? false
+            
+            hideEveryThing = false
         }
         .task(priority: .userInitiated){
             //TODO remove this artificial delay
