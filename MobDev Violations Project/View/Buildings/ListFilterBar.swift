@@ -12,8 +12,8 @@ struct FilterBar: View {
     @Binding var selectedFilterOption: Int
     @State var FGColor = Color.primary
     private let buttonWidth: CGFloat = 100
-    private let textHeight: CGFloat = 45
-    private let buttonHeight: CGFloat = 40
+    private let textHeight: CGFloat = 30
+    private let buttonHeight: CGFloat = 35
     var defaultColor: Color = Color(red: 127/255, green: 151/255, blue: 204/255)
     
     var body: some View {
