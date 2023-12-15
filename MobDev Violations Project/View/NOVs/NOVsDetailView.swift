@@ -31,33 +31,48 @@ struct NOVsDetailView: View {
 
                     GroupBox () {
                         HStack{
-                            Label("\(nov)", systemImage: "signpost.right")
+                            Label("\(nov)", systemImage: "signpost.right.and.left")
                                 .font(.headline)
                         }
                         Divider()
-                        VStack(alignment: .leading, spacing: 5) {
+                        VStack(alignment: .leading, spacing: 10) {
                             HStack {
                                 Text("Issued On:")
                                 Spacer()
                                 Text("\(getDateFromString(date))")
                             }
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 15)
+                            .background(.quaternary)
+                            .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                            
                             HStack {
                                 Text("BIN:")
                                 Spacer()
                                 Text("\(bin_id)")
                             }
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 15)
+                            .background(.quaternary)
+                            .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                            
                             HStack {
                                 Text("Status:")
                                 Spacer()
                                 Text("\(status ? "Active" : "Dismissed")")
                             }
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 15)
+                            .background(.quaternary)
+                            .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                            
                             Rectangle()
                                 .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
                                 .foregroundColor(status ? Color(red: 61/255, green: 173/255, blue: 166/255) : .purple)
                                 .frame(height: 7)
                                 .padding(.top)
                         }
-                        .padding()
+                        .padding(.vertical)
                         .font(.subheadline)
                     }
                     .padding()
