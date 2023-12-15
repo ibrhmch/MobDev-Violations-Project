@@ -81,7 +81,8 @@ struct BuildingDetailCardView: View {
                                 // Alerts HStack
                                 HStack{
                                     Label("Alerts \(!alertsEnabled ? "Disabled" : "Enabled")", systemImage: "bell.fill")
-                                        .font(.subheadline)
+                                        .font(.footnote)
+                                        .padding(.horizontal, 7)
                                     
                                     Spacer()
                                     
@@ -92,20 +93,25 @@ struct BuildingDetailCardView: View {
                                         saveAlertsStatus(listOfBinAlertsStatus)
                                         print(listOfBinAlertsStatus)
                                     }) {
-                                        Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                            .padding(7)
-                                            .background(!alertsEnabled ? Color.purple : Color(red: 61/255, green: 173/255, blue: 166/255))
-                                            .clipShape(Circle())
-                                            .foregroundColor(.white)
+                                        HStack{
+                                            Image(systemName: !alertsEnabled ? "bell.slash.circle" : "bell.and.waveform.fill" )
+                                                .resizable()
+                                                .frame(width: 20, height: 20)
+                                                .clipShape(Circle())
+                                                .foregroundColor(.white)
+                                        }
+                                        .padding(.horizontal, 15)
+                                        .padding(.vertical, 4)
+                                        .background(!alertsEnabled ? Color.purple : Color(red: 61/255, green: 173/255, blue: 166/255))
+                                        .cornerRadius(8)
                                     }
                                 }
                                 
                                 //Get Directions HStack
                                 HStack{
                                     Label("\(building.address)", systemImage: "mappin.and.ellipse")
-                                        .font(.subheadline)
+                                        .font(.footnote)
+                                        .padding(.horizontal, 7)
                                     
                                     Spacer()
                                     
@@ -118,16 +124,17 @@ struct BuildingDetailCardView: View {
                                             }
                                         }
                                     }) {
-                                        
                                         HStack{
                                             Image(systemName: "arrow.triangle.turn.up.right.circle")
                                                 .resizable()
                                                 .frame(width: 20, height: 20)
-                                                .padding(7)
-                                                .background(.blue)
                                                 .clipShape(Circle())
                                                 .foregroundColor(.white)
                                         }
+                                        .padding(.horizontal, 15)
+                                        .padding(.vertical, 4)
+                                        .background(.blue)
+                                        .cornerRadius(8)
                                     }
                                 }
                                 
@@ -140,21 +147,40 @@ struct BuildingDetailCardView: View {
                                         Spacer()
                                         Text("\(building.bin_id)")
                                     }
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 7)
+                                    .background(.quaternary)
+                                    .cornerRadius(3.0)
+                                    
                                     HStack {
                                         Text("Block: ")
                                         Spacer()
                                         Text("static")
                                     }
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 7)
+                                    .background(.quaternary)
+                                    .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                                    
                                     HStack {
-                                        Text("Active VOs:")
+                                        Text("Active Violations:")
                                         Spacer()
                                         Text("\(viewModel.buildingDetails.violations.activeviolations)")
                                     }
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 7)
+                                    .background(.quaternary)
+                                    .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                                    
                                     HStack {
-                                        Text("Active NOVs:")
+                                        Text("Active Notice of Violations:")
                                         Spacer()
                                         Text("\(viewModel.buildingDetails.notices.activenotices)")
                                     }
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 7)
+                                    .background(.quaternary)
+                                    .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
                                 }
                                 .font(.subheadline)
                             }
@@ -217,7 +243,7 @@ struct BuildingDetailCardView: View {
                                                         
                                                         Label("", systemImage: "hand.tap")
                                                     }
-                                                    .background(.fill)
+                                                    .background(.quaternary)
                                                     .foregroundColor(Color.primary)
                                                     .cornerRadius(6.0)
                                                     
@@ -251,7 +277,7 @@ struct BuildingDetailCardView: View {
                                                 
                                                 Label("", systemImage: "hand.tap")
                                             }
-                                            .background(.fill)
+                                            .background(.quaternary)
                                             .foregroundColor(Color.primary)
                                             .cornerRadius(6.0)
                                         }
