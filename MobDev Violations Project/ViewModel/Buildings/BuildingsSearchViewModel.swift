@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class BuildingsSearchViewModel: ObservableObject{
+public class BuildingsSearchViewModel: ObservableObject{
     @Published var buildingsFetched = false
     @Published var listOfBuildings: [Building]?
 

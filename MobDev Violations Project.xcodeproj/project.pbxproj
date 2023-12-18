@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		59079BBC2AF4343B003D5C9E /* BuildingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59079BBB2AF4343B003D5C9E /* BuildingDetailsViewModel.swift */; };
-		59091A7F2B30E332006BDC55 /* NY_ViolationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59091A7E2B30E332006BDC55 /* NY_ViolationsTests.swift */; };
+		59091A8C2B30E87E006BDC55 /* NY_ViolationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59091A8B2B30E87E006BDC55 /* NY_ViolationsTests.swift */; };
 		5931B57E2AF029E000584F14 /* BuildingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B57D2AF029E000584F14 /* BuildingModels.swift */; };
 		5931B5812AF0C1F900584F14 /* BuildingsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B5802AF0C1F900584F14 /* BuildingsSearchViewModel.swift */; };
 		5931B5832AF0CAEB00584F14 /* BuildingDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931B5822AF0CAEB00584F14 /* BuildingDetailCardView.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		59091A802B30E332006BDC55 /* PBXContainerItemProxy */ = {
+		59091A8D2B30E87E006BDC55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 59D61F782AEB4C26000E25C2 /* Project object */;
 			proxyType = 1;
@@ -48,8 +48,8 @@
 /* Begin PBXFileReference section */
 		59079B8D2AF2CE51003D5C9E /* temp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = temp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		59079BBB2AF4343B003D5C9E /* BuildingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingDetailsViewModel.swift; sourceTree = "<group>"; };
-		59091A7C2B30E332006BDC55 /* NY ViolationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NY ViolationsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		59091A7E2B30E332006BDC55 /* NY_ViolationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NY_ViolationsTests.swift; sourceTree = "<group>"; };
+		59091A892B30E87E006BDC55 /* NY ViolationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NY ViolationsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59091A8B2B30E87E006BDC55 /* NY_ViolationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NY_ViolationsTests.swift; sourceTree = "<group>"; };
 		5931B57D2AF029E000584F14 /* BuildingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingModels.swift; sourceTree = "<group>"; };
 		5931B5802AF0C1F900584F14 /* BuildingsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingsSearchViewModel.swift; sourceTree = "<group>"; };
 		5931B5822AF0CAEB00584F14 /* BuildingDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingDetailCardView.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		59091A792B30E332006BDC55 /* Frameworks */ = {
+		59091A862B30E87E006BDC55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -132,10 +132,10 @@
 			path = Buildings;
 			sourceTree = "<group>";
 		};
-		59091A7D2B30E332006BDC55 /* NY ViolationsTests */ = {
+		59091A8A2B30E87E006BDC55 /* NY ViolationsTests */ = {
 			isa = PBXGroup;
 			children = (
-				59091A7E2B30E332006BDC55 /* NY_ViolationsTests.swift */,
+				59091A8B2B30E87E006BDC55 /* NY_ViolationsTests.swift */,
 			);
 			path = "NY ViolationsTests";
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				59D61F822AEB4C26000E25C2 /* MobDev Violations Project */,
-				59091A7D2B30E332006BDC55 /* NY ViolationsTests */,
+				59091A8A2B30E87E006BDC55 /* NY ViolationsTests */,
 				59D61F812AEB4C26000E25C2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				59D61F802AEB4C26000E25C2 /* NY Violations.app */,
-				59091A7C2B30E332006BDC55 /* NY ViolationsTests.xctest */,
+				59091A892B30E87E006BDC55 /* NY ViolationsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -277,22 +277,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		59091A7B2B30E332006BDC55 /* NY ViolationsTests */ = {
+		59091A882B30E87E006BDC55 /* NY ViolationsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 59091A822B30E332006BDC55 /* Build configuration list for PBXNativeTarget "NY ViolationsTests" */;
+			buildConfigurationList = 59091A8F2B30E87E006BDC55 /* Build configuration list for PBXNativeTarget "NY ViolationsTests" */;
 			buildPhases = (
-				59091A782B30E332006BDC55 /* Sources */,
-				59091A792B30E332006BDC55 /* Frameworks */,
-				59091A7A2B30E332006BDC55 /* Resources */,
+				59091A852B30E87E006BDC55 /* Sources */,
+				59091A862B30E87E006BDC55 /* Frameworks */,
+				59091A872B30E87E006BDC55 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				59091A812B30E332006BDC55 /* PBXTargetDependency */,
+				59091A8E2B30E87E006BDC55 /* PBXTargetDependency */,
 			);
 			name = "NY ViolationsTests";
 			productName = "NY ViolationsTests";
-			productReference = 59091A7C2B30E332006BDC55 /* NY ViolationsTests.xctest */;
+			productReference = 59091A892B30E87E006BDC55 /* NY ViolationsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		59D61F7F2AEB4C26000E25C2 /* MobDev Violations Project */ = {
@@ -322,7 +322,7 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					59091A7B2B30E332006BDC55 = {
+					59091A882B30E87E006BDC55 = {
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = 59D61F7F2AEB4C26000E25C2;
 					};
@@ -345,13 +345,13 @@
 			projectRoot = "";
 			targets = (
 				59D61F7F2AEB4C26000E25C2 /* MobDev Violations Project */,
-				59091A7B2B30E332006BDC55 /* NY ViolationsTests */,
+				59091A882B30E87E006BDC55 /* NY ViolationsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		59091A7A2B30E332006BDC55 /* Resources */ = {
+		59091A872B30E87E006BDC55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,11 +370,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		59091A782B30E332006BDC55 /* Sources */ = {
+		59091A852B30E87E006BDC55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59091A7F2B30E332006BDC55 /* NY_ViolationsTests.swift in Sources */,
+				59091A8C2B30E87E006BDC55 /* NY_ViolationsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,15 +411,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		59091A812B30E332006BDC55 /* PBXTargetDependency */ = {
+		59091A8E2B30E87E006BDC55 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 59D61F7F2AEB4C26000E25C2 /* MobDev Violations Project */;
-			targetProxy = 59091A802B30E332006BDC55 /* PBXContainerItemProxy */;
+			targetProxy = 59091A8D2B30E87E006BDC55 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		59091A832B30E332006BDC55 /* Debug */ = {
+		59091A902B30E87E006BDC55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -437,7 +437,7 @@
 			};
 			name = Debug;
 		};
-		59091A842B30E332006BDC55 /* Release */ = {
+		59091A912B30E87E006BDC55 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -633,11 +633,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		59091A822B30E332006BDC55 /* Build configuration list for PBXNativeTarget "NY ViolationsTests" */ = {
+		59091A8F2B30E87E006BDC55 /* Build configuration list for PBXNativeTarget "NY ViolationsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				59091A832B30E332006BDC55 /* Debug */,
-				59091A842B30E332006BDC55 /* Release */,
+				59091A902B30E87E006BDC55 /* Debug */,
+				59091A912B30E87E006BDC55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
